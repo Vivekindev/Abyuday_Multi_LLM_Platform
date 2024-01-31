@@ -20,7 +20,7 @@ const nvidiaApiUrl = "https://api.nvcf.nvidia.com/v2/nvcf/pexec/functions/8f4118
 const fetchUrlFormat = "https://api.nvcf.nvidia.com/v2/nvcf/pexec/status/";
 
 const headers = {
-    "Authorization": "Bearer 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",
+    "Authorization": "Bearer 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",
     "Accept": "application/json",
 };
 
