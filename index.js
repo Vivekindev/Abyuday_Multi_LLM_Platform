@@ -16,7 +16,7 @@ res.status(500).send(err);
     })
 })
 
-const nvidiaApiUrl = "https://api.nvcf.nvidia.com/v2/nvcf/pexec/functions/2ae529dc-f728-4a46-9b8d-2697213666d8";
+const nvidiaApiUrl = "https://api.nvcf.nvidia.com/v2/nvcf/pexec/functions/8f4118ba-60a8-4e6b-8574-e38a4067a4a3";
 const fetchUrlFormat = "https://api.nvcf.nvidia.com/v2/nvcf/pexec/status/";
 
 const headers = {
