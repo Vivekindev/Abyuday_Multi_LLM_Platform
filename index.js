@@ -16,11 +16,11 @@ res.status(500).send(err);
     })
 })
 
-const nvidiaApiUrl = "https://api.nvcf.nvidia.com/v2/nvcf/pexec/functions/8f4118ba-60a8-4e6b-8574-e38a4067a4a3";
+const nvidiaApiUrl = "https://api.nvcf.nvidia.com/v2/nvcf/pexec/functions/2ae529dc-f728-4a46-9b8d-2697213666d8";
 const fetchUrlFormat = "https://api.nvcf.nvidia.com/v2/nvcf/pexec/status/";
 
 const headers = {
-    "Authorization": "Bearer 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",
+    "Authorization": "Bearer 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",
     "Accept": "application/json",
 };
 

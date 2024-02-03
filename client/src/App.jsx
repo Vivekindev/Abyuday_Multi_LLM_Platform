@@ -16,7 +16,7 @@ import gptImgLogo from './assets/robotics.svg';
 
 const App = () => {
   const msgEnd = useRef(null);
-
+  
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([
     {
@@ -69,7 +69,7 @@ const App = () => {
             wrapLines={true}
             lineNumberStyle={{ minWidth: '2em', paddingRight: '1em' }}
             customStyle={{ maxWidth: '100%', overflowX: 'auto' }}  // Set maximum width and enable horizontal scrolling
-          >
+            >
             {codeContent.trim()}
           </SyntaxHighlighter>
           );
@@ -83,7 +83,7 @@ const App = () => {
   
 
   const sendMsgToNvidia = async (message) => {
-    const apiUrl = "/api"; // Update this with your server's URL
+    const apiUrl = "/api"; 
 
     try {
       const response = await fetch(apiUrl, {
@@ -113,10 +113,10 @@ const App = () => {
       const responseData = await response.json();
       console.log("Nvidia Assistant Response:", responseData);
 
-      return responseData; // You can modify this to return specific data if needed
+      return responseData;
     } catch (error) {
       console.error("Error sending message to Nvidia API:", error);
-      throw error; // You can handle the error in the calling code
+      throw error; 
     }
   };
 
