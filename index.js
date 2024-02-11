@@ -33,7 +33,7 @@ app.post("/api", async (req, res) => {
         res.status(400).send("Invalid request format. Please provide a user message in the request body.");
         return;
     }
-    pushToDb(userMessage);
+   
 
     try {
         let response = await fetch(nvidiaApiUrl, {
@@ -58,6 +58,7 @@ app.post("/api", async (req, res) => {
 
         const responseBody = await response.json();
         res.json(responseBody["choices"][0]["message"]["content"]);
+        pushToDb(userMessage,responseBody["choices"][0]["message"]["content"]);
     } catch (error) {
         console.error(error);
         res.status(500).send("Error processing the request.");

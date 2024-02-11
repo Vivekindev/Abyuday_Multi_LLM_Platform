@@ -2,7 +2,8 @@ import mongoose from 'mongoose';
 
 // Define schema for your data
 const exampleSchema = new mongoose.Schema({
-  prompt: String 
+  prompt: String,
+  response: String
 });
 
 // Define a model based on the schema
@@ -18,11 +19,12 @@ mongoose.connect(uri, clientOptions)
 
 
 // Route to handle POST requests containing data to write to the database
-const pushToDb = async (prompt)=> {
+const pushToDb = async (prompt,response)=> {
     try {
         // Create an instance of ExampleModel with the extracted data
         const newData = new ExampleModel({
-         prompt
+         prompt,
+         response
         });
     
         // Save the data to the database
