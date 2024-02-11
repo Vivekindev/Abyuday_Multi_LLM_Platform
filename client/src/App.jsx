@@ -1,18 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark, materialDark, vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import './App.css';
 import gptLogo from './assets/robotics.svg';
 import addBtn from './assets/add-30.png';
 import msgIcon from './assets/message.svg';
 import home from './assets/home.svg';
 import saved from './assets/bookmark.svg';
-import rocket from './assets/rocket.svg';
 import logout from './assets/logout.svg';
 import sendBtn from './assets/send.svg';
 import userIcon from './assets/user.svg';
 import gptImgLogo from './assets/robotics.svg';
 
+import sendMsgToNvidia from './functions/sendMsgToNvidia.jsx';
+import formatMessage from './functions/formatMessage.jsx';
 
 const App = () => {
   const msgEnd = useRef(null);
@@ -28,97 +27,6 @@ const App = () => {
   useEffect(() => {
     msgEnd.current.scrollIntoView();
   }, [messages]);
-
-  const formatBoldText = (text) => {
-    const parts = text.split(/\*\*(.*?)\*\*/g);
-    return parts.map((part, index) => {
-      if (index % 2 === 1) {
-        return <strong key={index}>{part}</strong>;
-      } else {
-        return part;
-      }
-    });
-  };
-
-  const formatMessage = (message) => {
-    const parts = message.split(/(```(.*?)\n([\s\S]*?)```)/s);
-    return parts.map((part, index) => {
-      if (index % 4 === 0) {
-        // Regular text outside code blocks
-        const formattedText = part.replace(/`([^`]+)`/g, (_, content) => `<span style="color: #F9E076; ">${content}</span>`);
-  
-        return (
-          <div
-            key={index}
-            dangerouslySetInnerHTML={{ __html: formattedText }}
-          />
-        );
-      } else if (index % 4 === 2) {
-        // Code block
-        const language = parts[index];
-        const codeContent = parts[index + 1];
-  
-        if (language && codeContent) {
-          
-          return (
-            <SyntaxHighlighter
-            key={index}
-            language={language.trim()}
-            style={atomDark}
-            showLineNumbers={false}
-            wrapLines={true}
-            lineNumberStyle={{ minWidth: '2em', paddingRight: '1em' }}
-            customStyle={{ maxWidth: '100%', overflowX: 'auto' }}  // Set maximum width and enable horizontal scrolling
-            >
-            {codeContent.trim()}
-          </SyntaxHighlighter>
-          );
-        }
-      }
-      return null;
-    });
-  };
-  
-  
-  
-
-  const sendMsgToNvidia = async (message) => {
-    const apiUrl = "/api"; 
-
-    try {
-      const response = await fetch(apiUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          messages: [
-            {
-              content: message,
-              role: "user",
-            },
-          ],
-          temperature: 0.2,
-          top_p: 0.7,
-          max_tokens: 1024,
-          seed: 42,
-          stream: false,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error(`Failed to send message. Status: ${response.status}`);
-      }
-
-      const responseData = await response.json();
-      console.log("Nvidia Assistant Response:", responseData);
-
-      return responseData;
-    } catch (error) {
-      console.error("Error sending message to Nvidia API:", error);
-      throw error; 
-    }
-  };
 
   const handleSent = async () => {
     const text = input;

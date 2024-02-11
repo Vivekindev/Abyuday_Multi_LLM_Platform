@@ -3,8 +3,8 @@ import fetch from "node-fetch";
 import cors from "cors";
 import path from 'path';
 
-import pushToDb from './db.js';
-import getIST from './getIST.js'
+import pushToDb from './functions/db.js';
+import getIST from './functions/getIST.js'
 const __dirname = path.resolve();
 
 const app = express();

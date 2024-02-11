@@ -5,13 +5,13 @@
 }
 
 html{
-  font-size: 67%; 
+  font-size: 63%; 
 }
 
 body{
   background: #080f1a;
   color: white;
-  font-family: 'poppins', sans-serif;
+  font-family: 'roboto', sans-serif;
 }
 .App{
   min-height: 100vh;
@@ -20,6 +20,7 @@ body{
 }
 .sideBar{
   flex: 2;
+ 
  /* border-right: 1px solid rgb(100,100,100);*/
 }
 .main{
@@ -51,7 +52,7 @@ body{
   color: white;
   padding: 1.5rem;
   font-size: 1.5rem;
-  width: 25rem;
+  width: 23rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,14 +75,14 @@ body{
   align-items: center;
   background: transparent;
   color: rgba(222, 222, 222, 1);
-  width: 25rem;
+  width: 23rem;
   padding: 1.5rem;
   border-radius: 0.5rem;
   border: 1px solid rgba(98, 98, 98, 1);
   margin-bottom: 1.5rem;
   cursor: pointer;
   transition: background 0.3s, border-color 0.3s, color 0.3s;
-
+  font-size: 1.2rem;
   &:hover {
     background: rgba(98, 98, 98, 0.1);
     color: rgba(222, 222, 222, 1); /* Maintain original text color on hover */
@@ -95,7 +96,7 @@ body{
 }
 
 .query>img{
-  margin-right: 2rem;
+  margin-right: 1.7rem;
   object-fit:cover;
   height: 1.75rem;
 }
@@ -139,7 +140,7 @@ body{
   overflow-y: scroll;
   scroll-behavior: smooth;
   width: 200%;
-  max-width: 70rem;
+  max-width: 80rem;
   height: calc(100vh - 17rem);
 }
 .chats::-webkit-scrollbar {
@@ -157,7 +158,7 @@ body{
 .chat{
   margin: 1rem;
   padding: 2rem 3rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   display: flex;
   align-items: flex-start;
   text-align: justify;
@@ -188,7 +189,7 @@ body{
   display: flex;
   align-items: center;
   border-radius: 0.5rem;
-  width: 68rem;
+  width: 78rem;
 }
 .inp>input, .send{
   background: transparent;
