@@ -2,7 +2,9 @@ import express from "express";
 import fetch from "node-fetch";
 import cors from "cors";
 import path from 'path';
+
 import pushToDb from './db.js';
+import getIST from './getIST.js'
 const __dirname = path.resolve();
 
 const app = express();
@@ -58,7 +60,7 @@ app.post("/api", async (req, res) => {
 
         const responseBody = await response.json();
         res.json(responseBody["choices"][0]["message"]["content"]);
-        pushToDb(userMessage,responseBody["choices"][0]["message"]["content"],new Date());
+        pushToDb(userMessage,responseBody["choices"][0]["message"]["content"],getIST());
     } catch (error) {
         console.error(error);
         res.status(500).send("Error processing the request.");
