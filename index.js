@@ -58,7 +58,7 @@ app.post("/api", async (req, res) => {
 
         const responseBody = await response.json();
         res.json(responseBody["choices"][0]["message"]["content"]);
-        pushToDb(userMessage,responseBody["choices"][0]["message"]["content"]);
+        pushToDb(userMessage,responseBody["choices"][0]["message"]["content"],new Date());
     } catch (error) {
         console.error(error);
         res.status(500).send("Error processing the request.");

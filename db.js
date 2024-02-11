@@ -3,7 +3,8 @@ import mongoose from 'mongoose';
 // Define schema for your data
 const exampleSchema = new mongoose.Schema({
   prompt: String,
-  response: String
+  response: String,
+  date: String
 });
 
 // Define a model based on the schema
@@ -17,14 +18,14 @@ mongoose.connect(uri, clientOptions)
   .then(() => console.log('Connected to MongoDB'))
   .catch(error => console.error('Error connecting to MongoDB:', error));
 
-
 // Route to handle POST requests containing data to write to the database
-const pushToDb = async (prompt,response)=> {
+const pushToDb = async (prompt,response,date)=> {
     try {
         // Create an instance of ExampleModel with the extracted data
         const newData = new ExampleModel({
          prompt,
-         response
+         response,
+         date
         });
     
         // Save the data to the database
