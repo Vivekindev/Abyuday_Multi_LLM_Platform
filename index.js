@@ -2,7 +2,7 @@ import express from "express";
 import fetch from "node-fetch";
 import cors from "cors";
 import path from 'path';
-
+import pushToDb from './db.js';
 const __dirname = path.resolve();
 
 const app = express();
@@ -33,6 +33,7 @@ app.post("/api", async (req, res) => {
         res.status(400).send("Invalid request format. Please provide a user message in the request body.");
         return;
     }
+    pushToDb(userMessage);
 
     try {
         let response = await fetch(nvidiaApiUrl, {
