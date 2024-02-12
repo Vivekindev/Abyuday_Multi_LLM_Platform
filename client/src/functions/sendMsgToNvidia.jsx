@@ -9,10 +9,15 @@ const sendMsgToNvidia = async (message) => {
         },
         body: JSON.stringify({
           messages: [
+            // {
+            //   content: "  ```language_name       code      ``` , language_name must be cpp if its c++",
+            //   role: "system",
+            // },
             {
               content: message,
               role: "user",
-            },
+            }
+           
           ],
           temperature: 0.2,
           top_p: 0.7,

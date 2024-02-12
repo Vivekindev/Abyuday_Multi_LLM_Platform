@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Dropdown } from 'primereact/dropdown';
+import { InputText } from 'primereact/inputtext';
 import './App.css';
 import gptLogo from './assets/robotics.svg';
 import addBtn from './assets/add-30.png';

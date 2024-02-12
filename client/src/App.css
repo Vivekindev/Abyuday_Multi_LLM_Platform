@@ -134,6 +134,7 @@ body{
   align-items: center;
   margin: 6rem 10rem;
   margin-bottom: 0;
+  
 }
 .chats {
   overflow: hidden;
@@ -155,6 +156,31 @@ body{
   background-color: transparent; /* Make the track (the non-moving part) transparent */
 }
 
+
+
+/* Define scrollbar width and color */
+::-webkit-scrollbar {
+  width: 4px; /* Adjust as needed */
+  height:   0.7rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent; /* Dark background color */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #666; /* Darker color for scrollbar handle */
+  border-radius: 10px; /* Add curved edges */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #888; /* Lighter color on hover */
+}
+
+
 .chat{
   margin: 1rem;
   padding: 2rem 3rem;
@@ -162,6 +188,7 @@ body{
   display: flex;
   align-items: flex-start;
   text-align: justify;
+  max-width: 100%; /* Set your desired maximum width here */
 
 }
 .bot{
