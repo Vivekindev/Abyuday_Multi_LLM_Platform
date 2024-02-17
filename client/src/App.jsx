@@ -1,3 +1,4 @@
+// App.jsx
 import React, { useEffect, useRef, useState } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import { InputText } from 'primereact/inputtext';
@@ -14,6 +15,7 @@ import gptImgLogo from './assets/robotics.svg';
 
 import sendMsgToNvidia from './functions/sendMsgToNvidia.jsx';
 import formatMessage from './functions/formatMessage.jsx';
+import BasicSelect from './components/BasicSelect.jsx';
 
 const App = () => {
   const msgEnd = useRef(null);
@@ -21,23 +23,27 @@ const App = () => {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([
     {
-      text: "I am operating with the advanced capabilities provided by the Mixtral 8x7B LLM, which empowers me with enhanced language processing and understanding",
+      text: "I operate with advanced capabilities provided by a Large Language Model, empowering me with enhanced language processing and understanding.",
       isBot: true,
     }
   ]);
+  const [age, setAge] = useState("Mixtral8x7BInstruct"); // Initialize age state
 
   useEffect(() => {
     msgEnd.current.scrollIntoView();
   }, [messages]);
 
   const handleSent = async () => {
+    // Access the age variable here
+    console.log(age);
+
     const text = input;
     setInput('');
     setMessages([
       ...messages,
       { text, isBot: false }
     ]);
-    const res = await sendMsgToNvidia(text);
+    const res = await sendMsgToNvidia(text,age);
     setMessages([
       ...messages,
       { text, isBot: false },
@@ -102,17 +108,18 @@ const App = () => {
         </div>
       </div>
       <div className="main">
-        <div className="chats">
-       
-{messages.map((message, i) => (
-  <div key={i} className={message.isBot ? "chat bot" : "chat"}>
-    <img className="chatImg" src={message.isBot ? gptImgLogo : userIcon} alt="" />
-    <p className="txt" style={{ whiteSpace: 'pre-line', maxWidth: message.isBot ? '87%' : '87%', overflow: 'hidden' }}>
-      {formatMessage(message.text)}
-    </p>
-  </div>
-))}
+        {/* Pass age state and setAge function as props */}
+        <BasicSelect age={age} setAge={setAge} />
 
+        <div className="chats">
+          {messages.map((message, i) => (
+            <div key={i} className={message.isBot ? "chat bot" : "chat"}>
+              <img className="chatImg" src={message.isBot ? gptImgLogo : userIcon} alt="" />
+              <p className="txt" style={{ whiteSpace: 'pre-line', maxWidth: message.isBot ? '87%' : '87%', overflow: 'hidden' }}>
+                {formatMessage(message.text)}
+              </p>
+            </div>
+          ))}
           <div ref={msgEnd}></div>
         </div>
         <div className="chatFooter">
@@ -130,3 +137,4 @@ const App = () => {
 };
 
 export default App;
+

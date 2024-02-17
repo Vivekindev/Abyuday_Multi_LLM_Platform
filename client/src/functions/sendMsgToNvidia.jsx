@@ -1,5 +1,5 @@
-const sendMsgToNvidia = async (message) => {
-    const apiUrl = "/api"; 
+const sendMsgToNvidia = async (message,age) => {
+    const apiUrl = `/api/${age}`; 
 
     try {
       const response = await fetch(apiUrl, {
@@ -9,17 +9,13 @@ const sendMsgToNvidia = async (message) => {
         },
         body: JSON.stringify({
           messages: [
-            // {
-            //   content: "  ```language_name       code      ``` , language_name must be cpp if its c++",
-            //   role: "system",
-            // },
             {
               content: message,
               role: "user",
             }
            
           ],
-          temperature: 0.2,
+          temperature: 0.7,
           top_p: 0.7,
           max_tokens: 1024,
           seed: 42,
