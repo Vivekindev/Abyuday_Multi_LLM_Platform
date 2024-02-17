@@ -56,12 +56,13 @@ const App = () => {
   };
 
   const handleQuery = async (e) => {
+    console.log(age);
     const text = e.target.value;
     setMessages([
       ...messages,
       { text, isBot: false }
     ])
-    const res = await sendMsgToNvidia(text);
+    const res = await sendMsgToNvidia(text,age);
     setMessages([
       ...messages,
       { text, isBot: false },
