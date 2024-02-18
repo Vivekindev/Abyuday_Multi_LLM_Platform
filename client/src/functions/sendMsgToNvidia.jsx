@@ -15,7 +15,7 @@ const sendMsgToNvidia = async (message,age) => {
             }
            
           ],
-          temperature: 0.7,
+          temperature: 0.6,
           top_p: 0.7,
           max_tokens: 1024,
           seed: 42,

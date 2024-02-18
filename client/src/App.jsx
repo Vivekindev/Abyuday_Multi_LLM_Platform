@@ -91,8 +91,8 @@ const App = () => {
             <button className="query" value={"What is Websocket?"} onClick={handleQuery}>
               <img src={msgIcon} alt="query" />What is Websocket?
             </button>
-            <button className="query" value={"Tourist places in Tumkur"} onClick={handleQuery}>
-              <img src={msgIcon} alt="query" />Tourist places in Tumkur
+            <button className="query" value={"Generate code to Fetch Data Asynchronously from an API in Javascript"} onClick={handleQuery}>
+              <img src={msgIcon} alt="query" />Generate a Code in JS
             </button>
           </div>
         </div>
