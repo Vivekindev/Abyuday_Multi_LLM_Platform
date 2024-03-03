@@ -1,8 +1,12 @@
 import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 const formatMessage = (message) => {
+    
+
+
     const parts = message.split(/(```(.*?)\n([\s\S]*?)```|\*\*(.*?)\*\*)/s);
     return parts.map((part, index) => {
         if (index % 5 === 0) {
@@ -32,7 +36,7 @@ const formatMessage = (message) => {
                         showLineNumbers={false}
                         wrapLines={true}
                         lineNumberStyle={{ minWidth: '2em', paddingRight: '1em' }}
-                        customStyle={{ maxWidth: '100%', overflowX: 'auto' }}  // Set maximum width and enable horizontal scrolling
+                        customStyle={{ maxWidth:  '100%', overflowX: 'auto' }}  // Set maximum width and enable horizontal scrolling
                     >
                         {codeContent.trim()}
                     </SyntaxHighlighter>

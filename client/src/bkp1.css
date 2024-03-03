@@ -1,0 +1,369 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html{
+    font-size: 63%; 
+  }
+  
+  body{
+    background: #080f1a;
+    color: white;
+    font-family: 'roboto', sans-serif;
+  }
+  .App{
+    min-height: 100vh;
+    display: flex;
+  
+  }
+  .sideBar{
+    flex: 2;
+    max-width: 28rem;
+    min-width: 28rem;
+   /* border-right: 1px solid rgb(100,100,100);*/
+  }
+  .main{
+    flex:9;
+  }
+  .logo{
+    margin-right: 1rem;
+    width: 6rem;
+  }
+  .brand{
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  .upperSide{
+    padding: 2.5rem;
+  /*  border-bottom: 1px solid rgb(100,100,100);*/
+    height: 75%;
+    background: #04080e;
+    max-width: 28rem;
+  }
+  .lowerSide{
+    height: 25%;
+    padding: 2rem;
+    background: #04080e;
+    max-width: 28rem;
+  }
+  .upperSideTop{
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.5rem;
+  }
+  .midBtn {
+    background: rgb(28, 37, 58);
+    border: none;
+    color: white;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    width: 23rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    border-radius: 0.5rem;
+    transition: background 0.3s; /* Adding a smooth transition effect on background change */
+  }
+  
+  .midBtn:hover {
+    background: rgb(49, 61, 88); /* Change the background color on hover */
+  }
+  
+  .addBtn{
+    height: 2rem;
+    padding-right: 1rem;
+  }
+  .query {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    color: rgba(222, 222, 222, 1);
+    width: 23rem;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(98, 98, 98, 1);
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
+    font-size: 1.2rem;
+    &:hover {
+      background: rgba(98, 98, 98, 0.1);
+      color: rgba(222, 222, 222, 1); /* Maintain original text color on hover */
+    }
+  
+    &:active {
+      background: rgba(98, 98, 98, 0.2);
+      border-color: rgba(0, 0, 0, 1);
+      color: rgba(222, 222, 222, 1); /* Maintain original text color on click */
+    }
+  }
+  
+  .query>img{
+    margin-right: 1.7rem;
+    object-fit:cover;
+    height: 1.75rem;
+  }
+  
+  .listItems{
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+  }
+  .listItemsImg{
+    margin: 1rem;
+    padding-right: 1rem;
+  }
+  .logout{
+    margin-left: 0.5rem;
+    width:3.5rem;
+    
+  }
+  .listItems:nth-child(1)>.listItemsImg {
+    margin-right: 0.5rem;
+  }
+  .listItems:nth-child(3)>.listItemsImg {
+    margin-right: 0.8rem;
+  }
+  
+  .main{
+    min-height: calc(100vh - 14rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 6rem 10rem;
+    margin-bottom: 0;
+    margin-top: 1.4rem;
+  }
+  .chats {
+    
+    width: 200%;
+    max-width: 80rem;
+    
+    margin-top: 1rem;
+  }
+  .chats::-webkit-scrollbar {
+    width: 0.5rem; /* Set a width to make sure it's covered by the track style */
+  }
+  
+  .chats::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Make the thumb (the moving part) transparent */
+  }
+  
+  .chats::-webkit-scrollbar-track {
+    background-color: transparent; /* Make the track (the non-moving part) transparent */
+  }
+  
+  
+  
+  /* Define scrollbar width and color */
+  ::-webkit-scrollbar {
+    width: 4px; /* Adjust as needed */
+    height:   0.7rem;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent; /* Dark background color */
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #666; /* Darker color for scrollbar handle */
+    border-radius: 10px; /* Add curved edges */
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #888; /* Lighter color on hover */
+  }
+  
+  
+  .chat{
+    margin: 1rem;
+    padding: 2rem 3rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    text-align: justify;
+    max-width: 100%; /* Set your desired maximum width here */
+  
+  }
+  .bot{
+    background: rgb(28, 37, 58);
+    width: fit-content;
+    border-radius: 0.5rem;
+  }
+  .chatImg{
+    object-fit: cover;
+    width: 3.5rem;
+    margin-right: 2rem;
+    border-radius: 0.5rem;
+  }
+  .chatFooter{
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  .rightPart{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+    width: 100%;
+  }
+  .inp{
+    padding: 0.5rem;
+    background: rgba(28, 37, 58);
+    display: flex;
+    align-items: center;
+    border-radius: 0.5rem;
+    width: 78rem;
+  }
+  .inp>input, .send{
+    background: transparent;
+    border: none;
+  }
+  .inp>input{
+    width: calc(100% - 3rem);
+    outline: none;
+    padding: 1.25rem;
+    color: white;
+  }
+  
+  
+  
+  .chatFooter>p{
+    margin: 1.5rem 0;
+  }
+  
+  .txt {
+    line-height: 2.3rem ;
+    color: rgba(222,222,222,1)
+  }
+  
+  .codeBlockWrapper {
+    overflow-x: auto;
+    max-width: 100%; /* Optional: Adjust max-width as needed */
+  }
+  
+  
+  /*-------------------start-------------------------*/
+  
+  .inpPad{
+    padding: 1rem;
+    background: rgba(28, 37, 58);
+    display: none;
+    align-items: center;
+    border-radius: 0.5rem;
+    width: 77.5rem;
+    margin-left: 1rem;
+    margin-right: 5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    left: 0;
+    bottom: 0;
+  }
+  .inpPad>input, .send{
+    background: transparent;
+    border: none;
+  }
+  .inpPad>button>img{
+    width: 200%;
+   
+  }
+  .inpPad>input{
+    width: calc(100% - 5.2rem);
+    outline: none;
+    padding: 1.25rem;
+    color: white;
+    font-size: 4rem;
+    
+  }
+  /*--------------------end------------------------*/
+  
+  /* For mobile devices */
+  @media only screen and (max-width: 600px) {
+    
+  
+  
+    
+    .upperSide,
+    .sideBar,
+    .lowerSide,
+    .chatFooter {
+      display: none;
+    }
+    .inpPad{
+      display: flex;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+    }
+    .main {
+      margin: 1rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  
+    }
+  
+    .chat{
+      margin: 1rem;
+      padding: 2rem 3rem;
+      font-size: 3rem;
+      display: flex;
+      align-items: flex-start;
+      text-align: justify;
+      max-width: 100%; /* Set your desired maximum width here */
+      margin-left: 1.5rem;
+    }
+    .bot{
+      background: rgb(28, 37, 58);
+      width: 97%;
+      max-width: 97%;
+      border-radius: 0.5rem;
+    }
+  
+    .chats {  
+      overflow: hidden;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+      width: 200%;
+      max-width: 80rem !important;
+      height: auto;
+      margin-top: 1rem;
+    }
+    .txt{
+      line-height: 4.4rem;
+    }
+    .App {
+      height: 100vh;
+       
+      
+    }
+  .rightPart{
+   height: 100vh;
+    width:auto;
+   
+  }  
+  
+  
+  
+  
+  
+  }
+  
+  
+  

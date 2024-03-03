@@ -8,6 +8,7 @@ html{
   font-size: 63%; 
 }
 
+
 body{
   background: #080f1a;
   color: white;
@@ -20,7 +21,8 @@ body{
 }
 .sideBar{
   flex: 2;
- 
+  max-width: 28rem;
+  min-width: 28rem;
  /* border-right: 1px solid rgb(100,100,100);*/
 }
 .main{
@@ -39,8 +41,14 @@ body{
 /*  border-bottom: 1px solid rgb(100,100,100);*/
   height: 75%;
   background: #04080e;
+  max-width: 28rem;
 }
-
+.lowerSide{
+  height: 25%;
+  padding: 2rem;
+  background: #04080e;
+  max-width: 28rem;
+}
 .upperSideTop{
   display: flex;
   align-items: center;
@@ -100,11 +108,25 @@ body{
   object-fit:cover;
   height: 1.75rem;
 }
-.lowerSide{
-  height: 25%;
-  padding: 2rem;
-  background: #04080e;
+/*---------------------------mobilePrompt----------------------------- */
+.mob{
+  display: none;
+ 
+  padding-left: 5rem;
+  margin-top: 2.5rem;
+  width: 96.5vw;
+  height: 8vh;
+  font-size: 2.8rem;
 }
+.mob>img{
+  height: 4rem;
+  margin-right: 3rem;
+}
+.egPrompt{
+  display: flex;
+  flex-direction: column;
+}
+/*--------------------------------------------------------------------- */
 .listItems{
   margin: 1rem;
   display: flex;
@@ -136,13 +158,13 @@ body{
   margin-bottom: 0;
   margin-top: 1.4rem;
 }
-.chats {
+.chats {  
   overflow: hidden;
   overflow-y: scroll;
   scroll-behavior: smooth;
   width: 200%;
-  max-width: 80rem;
-  height: calc(100vh - 18rem);
+  max-width: 80rem !important;
+  margin-bottom: 1rem;
   margin-top: 1rem;
 }
 .chats::-webkit-scrollbar {
@@ -188,7 +210,7 @@ body{
   font-size: 1.5rem;
   display: flex;
   align-items: flex-start;
-  text-align: justify;
+  text-align: left;
   max-width: 100%; /* Set your desired maximum width here */
 
 }
@@ -211,8 +233,18 @@ body{
   align-items: center;
   justify-content: center;
 }
+
+
+.rightPart{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
+  width: 100%;
+}
 .inp{
-  padding: 0.5rem;
+  padding: 0.3rem;
   background: rgba(28, 37, 58);
   display: flex;
   align-items: center;
@@ -227,8 +259,49 @@ body{
   width: calc(100% - 3rem);
   outline: none;
   padding: 1.25rem;
-  color: white;
+  color: rgba(222,222,222,1);
+  font-size: 1.45rem;
 }
+
+/* CSS for .inp div */
+.inp {
+  padding: 0.3rem;
+  background: rgba(28, 37, 58);
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  width: 78rem;
+  transition: box-shadow 0.3s ease; /* Add transition for box-shadow */
+}
+
+/* CSS for highlighting the .inp div on focus */
+.inp:focus-within {
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.3); /* Adjust color and opacity of outline */
+}
+
+/* CSS for input field within .inp */
+.inp > input {
+  width: calc(100% - 3rem);
+  outline: none; /* Remove default outline */
+  padding: 1.25rem;
+  color: rgba(222, 222, 222, 1);
+  font-size: 1.45rem;
+  background: transparent;
+  border: none;
+}
+
+/* Optional: CSS for button within .inp */
+.inp > button {
+  background: transparent;
+  border: none;
+}
+
+/* Optional: CSS for button hover effect */
+.inp > button:hover {
+  cursor: pointer;
+  filter: brightness(1.5); /* Adjust brightness on hover */
+}
+
 
 .chatFooter>p{
   margin: 1.5rem 0;
@@ -245,5 +318,162 @@ body{
 }
 
 
+/*-------------------start-------------------------*/
+
+.inpPad{
+  padding: 1rem;
+  background: rgba(28, 37, 58);
+  display: none;
+  align-items: center;
+  border-radius: 0.5rem;
+  width: 97vw;
+  margin-left: 1rem;
+  margin-right: 5rem;
+  margin-bottom: 2.9rem;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  transition: box-shadow 0.3s ease;
+}
+.inpPad:focus-within {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3); /* Adjust color and opacity of outline */
+}
+.inpPad > input {
+  width: calc(100% - 6rem);
+  outline: none; /* Remove default outline */
+  padding: 1.9rem;
+  color: white;
+  font-size: 3rem;
+  background: transparent;
+  border: none;
+}
+
+.inpPad > button {
+  background: transparent;
+  border: none;
+}
+.inpPad > button:hover {
+  cursor: pointer;
+  filter: brightness(1.5); /* Adjust brightness on hover */
+}
+.inpPad>input, .send{
+  background: transparent;
+  border: none;
+}
+.inpPad>button>img{
+  width: 130%;
+ 
+}
+
+
+
+/*--------------------end------------------------*/
+
+
+
+.navbar {
+ 
+ display: none;
+  align-items: center;
+  border-radius: 0.5rem;
+  
+  margin-top: 2rem;
+  position: relative;
+  top: 0; /* Changed from 'bottom: 0;' to 'top: 0;' */
+  left: 0;
+  
+}
+
+
+
+
+
+
+
+/* For mobile devices */
+@media only screen and (max-width: 600px) {
+  
+
+html{
+  font-size: 35%;
+}
+  
+  .upperSide,
+  .sideBar,
+  .lowerSide,
+  .chatFooter {
+    display: none;
+  }
+  .inpPad{
+    display: flex;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+  }
+  .main {
+    margin: 1rem;
+    height: 50vh;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+
+  .chat{
+    margin: 1rem;
+    padding: 2rem 1.2rem;
+    font-size: 3rem;
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%; /* Set your desired maximum width here */
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .bot{
+    background: rgb(28, 37, 58);
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0.5rem;
+  }
+
+  .chats {  
+    overflow: hidden;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    width: 200%;
+    max-width: 98vw !important;
+    height: 84vh;
+    margin-top: 0rem;
+  }
+  .txt{
+    line-height: 4.4rem;
+  }
+  .App {
+    height: 90vh;
+    
+    
+  }
+.rightPart{
+ height: 85vh;
+  width:auto;
+ 
+}  
+
+.navbar{
+  display: block;
+}
+
+
+.select{
+  display: none;
+}
+
+
+.mob{
+  display: flex;
+}
+}
 
 
