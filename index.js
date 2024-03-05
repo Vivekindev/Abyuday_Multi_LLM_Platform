@@ -12,8 +12,14 @@ const port = process.env.PORT || 8080; // Choose the port you want to use
 app.use(cors());
 
 app.use(express.static(path.join(__dirname,"./client/dist")));
-app.get('*',function(_,res){
+app.get('/',function(_,res){
     res.sendFile(path.join(__dirname, "./client/dist/index.html"), function(err){
+res.status(500).send(err);
+    })
+})
+app.use(express.static(path.join(__dirname,"./")));
+app.get('/home',function(_,res){
+    res.sendFile(path.join(__dirname, "./home.html"), function(err){
 res.status(500).send(err);
     })
 })
