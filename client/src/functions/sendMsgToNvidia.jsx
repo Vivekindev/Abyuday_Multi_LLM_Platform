@@ -28,11 +28,11 @@ const sendMsgToNvidia = async (message,age) => {
       }
 
       const responseData = await response.json();
-      console.log("Nvidia Assistant Response:", responseData);
+      console.log("Abyuday Server Response:", responseData);
 
       return responseData;
     } catch (error) {
-      console.error("Error sending message to Nvidia API:", error);
+      console.error("Error sending message to Abyuday Server:", error);
       throw error; 
     }
   };
