@@ -408,15 +408,15 @@ div a {
 
 @keyframes gradientAnimation {
   0% {
-    background-position: 200% 50%;
+    background-position: 200% 20%;
   }
   100% {
-    background-position: -200% 50%;
+    background-position: -200% 20%;
   }
 }
 
 .chat.bot.generating {
-  animation: gradientAnimation 3s linear infinite;
+  animation: gradientAnimation 2.2s linear infinite;
   background: linear-gradient(to left, #1C253A, #424A5F, #1C253A);
   background-size: 400% auto;
 }
