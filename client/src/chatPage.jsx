@@ -47,7 +47,7 @@ const divStyle = {
   let cookieString = document.cookie;
   const parts = cookieString.split('; ');
   let model = parts[parts.length - 1]; // Accessing the last element of the array
-  if (model[0] == '_'){model="Mixtral8x7BInstruct";}
+  if (model[0] == '_' || model[0] == ''){model="Mixtral8x7BInstruct";}
   const [age, setAge] = useState(model); // Initialize SELECT model state
   //---------------------------------end-------------------------------------------------
   useEffect(() => {
