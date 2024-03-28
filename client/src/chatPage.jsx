@@ -43,6 +43,7 @@ const divStyle = {
       isBot: true,
     }
   ]);
+  console.log(document.cookie);
   let model = (document.cookie == "")?("Mixtral8x7BInstruct"):(document.cookie);
   const [age, setAge] = useState(model); // Initialize SELECT model state
 
