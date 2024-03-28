@@ -43,8 +43,8 @@ const divStyle = {
       isBot: true,
     }
   ]);
-  let model = document.cookie;
-  const [age, setAge] = useState(model); // Initialize age state
+  let model = (document.cookie == "")?("Mixtral8x7BInstruct"):(document.cookie);
+  const [age, setAge] = useState(model); // Initialize SELECT model state
 
   useEffect(() => {
     if (!isVisible) {
