@@ -43,10 +43,13 @@ const divStyle = {
       isBot: true,
     }
   ]);
-  console.log(document.cookie);
-  let model = (document.cookie == "")?("Mixtral8x7BInstruct"):(document.cookie);
+  //----------------------------------------------------------------------------------
+  let cookieString = document.cookie;
+  const parts = cookieString.split('; ');
+  const model = parts[parts.length - 1]; // Accessing the last element of the array
+  
   const [age, setAge] = useState(model); // Initialize SELECT model state
-
+  //----------------------------------------------------------------------------------
   useEffect(() => {
     if (!isVisible) {
       msgEnd.current.scrollIntoView();
