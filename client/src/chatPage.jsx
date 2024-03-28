@@ -43,13 +43,13 @@ const divStyle = {
       isBot: true,
     }
   ]);
-  //----------------------------------------------------------------------------------
+  //-------------------------------start---------------------------------------------------
   let cookieString = document.cookie;
   const parts = cookieString.split('; ');
-  const model = parts[parts.length - 1]; // Accessing the last element of the array
-  
+  let model = parts[parts.length - 1]; // Accessing the last element of the array
+  if (model[0] == '_'){model="Mixtral8x7BInstruct";}
   const [age, setAge] = useState(model); // Initialize SELECT model state
-  //----------------------------------------------------------------------------------
+  //---------------------------------end-------------------------------------------------
   useEffect(() => {
     if (!isVisible) {
       msgEnd.current.scrollIntoView();
