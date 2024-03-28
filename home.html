@@ -463,7 +463,7 @@ header .info-text .button{
                     </p>
                     
                 </div>
-            <a href="/"><button type="button" class="btn para" onClick="setCookie('Mixtral8x7BInstruct')">Chat</button></a>  
+            <a href="/"><button type="button" class="btn para" onClick="setCookie('Model=Mixtral8x7BInstruct')">Chat</button></a>  
                 
             </div>
             <div class="card">
@@ -476,7 +476,7 @@ header .info-text .button{
                     </p>
                     
                 </div>
-                <a href="/"><button type="button" class="btn para" onClick="setCookie('Mistral7BInstruct')">Chat</button></a>
+                <a href="/"><button type="button" class="btn para" onClick="setCookie('Model=Mistral7BInstruct')">Chat</button></a>
             </div>
             <div class="card">
                 <div class="info">
@@ -488,7 +488,7 @@ header .info-text .button{
                     </p>
                     
                 </div>
-                <a href="/"><button type="button" class="btn para" onClick="setCookie('Llama270B')">Chat</button></a>
+                <a href="/"><button type="button" class="btn para" onClick="setCookie('Model=Llama270B')">Chat</button></a>
             </div>
             
             <div class="card">
@@ -501,7 +501,7 @@ header .info-text .button{
                     </p>
                     
                 </div>
-                <a href="/"><button type="button" class="btn para" onClick="setCookie('CodeLlama70B')">Chat</button></a>
+                <a href="/"><button type="button" class="btn para" onClick="setCookie('Model=CodeLlama70B')">Chat</button></a>
             </div>
             <div class="card">
                 <div class="info">
@@ -513,7 +513,7 @@ header .info-text .button{
                     </p>
                     
                 </div>
-                <a href="/"><button type="button" class="btn para" onClick="setCookie('CodeLlama34B')">Chat</button></a>
+                <a href="/"><button type="button" class="btn para" onClick="setCookie('Model=CodeLlama34B')">Chat</button></a>
             </div>
             <div class="card">
                 <div class="info">
@@ -525,7 +525,7 @@ header .info-text .button{
                     </p>
                     
                 </div>
-                <a href="/"><button type="button" class="btn para" onClick="setCookie('CodeLlama13B')">Chat</button></a>
+                <a href="/"><button type="button" class="btn para" onClick="setCookie('Model=CodeLlama13B')">Chat</button></a>
             </div>
             <div class="card">
                 <div class="info">
@@ -537,7 +537,7 @@ header .info-text .button{
                     </p>
                     
                 </div>
-                <a href="/"><button type="button" class="btn para" onClick="setCookie('NVLlama270BRLHF')">Chat</button></a>
+                <a href="/"><button type="button" class="btn para" onClick="setCookie('Model=NVLlama270BRLHF')">Chat</button></a>
             </div>
             <div class="card">
                 <div class="info">
@@ -548,7 +548,7 @@ header .info-text .button{
                     </p>
                     
                 </div>
-                <a href="/"><button type="button" class="btn para" onClick="setCookie('NVLlama270BSteerLMChat')">Chat</button></a>
+                <a href="/"><button type="button" class="btn para" onClick="setCookie('Model=NVLlama270BSteerLMChat')">Chat</button></a>
             </div>
         </div>
     </section>
@@ -658,9 +658,9 @@ window.addEventListener('scroll', function () {
 function setCookie(model){
     document.cookie= model;
 }
-window.onload = ()=>{
-    console.log(document.cookie);
-}
+// window.onload = ()=>{
+//     console.log(document.cookie);
+// }
     </script>
 </body>
 

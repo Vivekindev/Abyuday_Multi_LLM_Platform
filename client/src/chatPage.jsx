@@ -45,9 +45,20 @@ const divStyle = {
   ]);
   //-------------------------------start---------------------------------------------------
   let cookieString = document.cookie;
-  const parts = cookieString.split('; ');
-  let model = parts[parts.length - 1]; // Accessing the last element of the array
-  if (model[0] == '_' || model[0] == ''){model="Mixtral8x7BInstruct";}
+  let model = "";
+  // Define the regular expression pattern
+  const pattern = /Model=([^;]+)/;
+
+// Search for the pattern in the string
+const match = cookieString.match(pattern);
+
+// If a match is found, extract the model name
+if (match) {
+     model = match[1];   
+} else {
+     model = "Mixtral8x7BInstruct";
+}
+
   const [age, setAge] = useState(model); // Initialize SELECT model state
   //---------------------------------end-------------------------------------------------
   useEffect(() => {

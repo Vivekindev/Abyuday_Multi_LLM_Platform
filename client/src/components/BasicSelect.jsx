@@ -14,6 +14,7 @@ const BasicSelect = ({ age, setAge }) => {
 
 
   const handleChange = (event) => {
+    document.cookie = "Model=" + event.target.value;
     setAge(event.target.value);
   };
 
