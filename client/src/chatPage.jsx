@@ -43,7 +43,8 @@ const divStyle = {
       isBot: true,
     }
   ]);
-  const [age, setAge] = useState("Mixtral8x7BInstruct"); // Initialize age state
+  let model = document.cookie;
+  const [age, setAge] = useState(model); // Initialize age state
 
   useEffect(() => {
     if (!isVisible) {
