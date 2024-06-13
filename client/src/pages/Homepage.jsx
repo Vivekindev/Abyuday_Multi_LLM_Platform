@@ -72,7 +72,7 @@ const Homepage = () => {
                     <div className="jaro">ABYUDAY<br /></div>
                     <h4>A Multi LLM Platform</h4>
                 </div>
-                <a href="/" className="button">
+                <a href="/chat" className="button">
                     <button type="button" className="btn">Try Now</button>
                 </a>
                 <a href="#features" className="scroll">
