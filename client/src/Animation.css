@@ -1,0 +1,32 @@
+.animated-wrapper {
+    display: flex;
+    justify-content: space-between; /* Distribute boxes evenly */
+  }
+  
+  .animated-box {
+    width: 300px; /* Adjust width to match the original layout */
+    min-height: 100px; /* Set a minimum height */
+    background-color: #ffffff;
+    margin: 10px; /* Adjust margin to match the original layout */
+    padding: 20px; /* Adjust padding to match the original layout */
+    border-radius: 10px; /* Adjust border-radius to match the original layout */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+    overflow: hidden; /* Hide overflow content */
+  }
+  
+  @keyframes loadingAnimation {
+    0% {
+      background-color: rgba(255, 255, 255, 0.5); /* Start with a semi-transparent background */
+    }
+    50% {
+      background-color: rgba(255, 255, 255, 0.7); /* Increase opacity */
+    }
+    100% {
+      background-color: rgba(255, 255, 255, 0.5); /* Back to semi-transparent */
+    }
+  }
+  
+  .animated-box.loading {
+    animation: loadingAnimation 1.5s ease-in-out infinite; /* Apply loading animation */
+  }
+  

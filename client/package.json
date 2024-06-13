@@ -12,15 +12,17 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "@firecms/neat": "^0.2.2",
     "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.10",
     "js-cookie": "^3.0.5",
     "primereact": "^10.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-particles-js": "^3.6.0",
-    "react-router-dom": "^6.22.2",
-    "react-syntax-highlighter": "^15.5.0"
+    "react-router-dom": "^6.22.3",
+    "react-syntax-highlighter": "^15.5.0",
+    "react-toastify": "^10.0.5",
+    "three.js": "^0.77.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
@@ -30,6 +32,6 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "vite": "^5.0.8"
+    "vite": "^5.2.7"
   }
 }

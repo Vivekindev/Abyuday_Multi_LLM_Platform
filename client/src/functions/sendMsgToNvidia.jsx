@@ -6,6 +6,7 @@ const sendMsgToNvidia = async (message,age) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization" : localStorage.getItem('accessToken')
         },
         body: JSON.stringify({
           messages: [

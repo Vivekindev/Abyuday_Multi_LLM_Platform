@@ -2,18 +2,26 @@
 <html lang="en">
 
 <head>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KFZLZVX6');</script>
-    <!-- End Google Tag Manager -->
+ 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap');
+
+       
+
+.jaro{
+  font-family: "Jaro", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  animation: fadeInAnimation 2s ease-in-out forwards;
+    opacity: 0;
+    font-size: 6rem;
+    margin-bottom: 0.1rem;
+}
 
 html{
     scroll-behavior: smooth;
@@ -91,7 +99,7 @@ header .info-text{
 header .info-text h1{
     font-size: 5rem;
     font-weight: 500;
-    font-family: 'Ubuntu';
+    
 }
 
 header .info-text h3{
@@ -404,6 +412,7 @@ header .info-text .button{
 
 
 .prodName{
+    
     display: flex;
     flex-direction: column;
     height: 10rem;
@@ -419,13 +428,10 @@ header .info-text .button{
 </head>
 
 <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFZLZVX6"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+   
     <nav class="navbar">
         <div class="container">
-            <img src="./robotics.svg" alt="" id="robo" width="2%">
+            <img src="./assets/robotics.svg" alt="" id="robo" width="2%">
             <ul class="navbar-menu">
                 
                 <li>BETA</a></li>
@@ -434,10 +440,10 @@ header .info-text .button{
         </div>
     </nav>
     <header>
-        <div id="particles"></div>
+      
         <div class="info-text">
             <div class="prodName">
-                <h1 class="fade-in">AbyuDAY</h1><br>
+               <div class="jaro"> ABYUDAY<br></div>
             <h4>A Multi LLM Platform</h4>
             </div>
             
@@ -456,7 +462,7 @@ header .info-text .button{
         <div class="feature-cards">
             <div class="card">
                 <div class="info">
-                    <img src="./mistral.png" alt="" style="width: 100%;">
+                    <img src="./assets/mistral.png" alt="" style="width: 100%;">
                     <h1>Mixtral 8x7B Instruct</h1>
                     <p class="paragraph">
                         Mixtral8x7B is a powerful open-source language model excelling in tasks like code generation and translation.  It offers high performance at a fraction of the cost compared to similar models.
@@ -468,7 +474,7 @@ header .info-text .button{
             </div>
             <div class="card">
                 <div class="info">
-                    <img src="./mistral.png" alt="" style="width: 100%;">
+                    <img src="./assets/mistral.png" alt="" style="width: 100%;">
 
                     <h1>Mistral 7B Instruct</h1>
                     <p class="paragraph">
@@ -480,7 +486,7 @@ header .info-text .button{
             </div>
             <div class="card">
                 <div class="info">
-                    <img src="./meta.png" alt="" style="width: 100%;">
+                    <img src="./assets/meta.png" alt="" style="width: 100%;">
 
                     <h1>Llama2 70B</h1>
                     <p class="paragraph">
@@ -493,7 +499,7 @@ header .info-text .button{
             
             <div class="card">
                 <div class="info">
-                    <img src="./meta.png" alt="" style="width: 100%;">
+                    <img src="./assets/meta.png" alt="" style="width: 100%;">
 
                     <h1>Code Llama 70B</h1>
                     <p class="paragraph">
@@ -505,7 +511,7 @@ header .info-text .button{
             </div>
             <div class="card">
                 <div class="info">
-                    <img src="./meta.png" alt="" style="width: 100%;">
+                    <img src="./assets/meta.png" alt="" style="width: 100%;">
 
                     <h1>Code Llama 34B</h1>
                     <p class="paragraph">
@@ -517,7 +523,7 @@ header .info-text .button{
             </div>
             <div class="card">
                 <div class="info">
-                    <img src="./meta.png" alt="" style="width: 100%;">
+                    <img src="./assets/meta.png" alt="" style="width: 100%;">
 
                     <h1>Code Llama 13B</h1>
                     <p class="paragraph">
@@ -529,7 +535,7 @@ header .info-text .button{
             </div>
             <div class="card">
                 <div class="info">
-                    <img src="./meta.png" alt="" style="width: 100%;">
+                    <img src="./assets/meta.png" alt="" style="width: 100%;">
 
                     <h1>NV-Llama2-70B-RLHF</h1>
                     <p class="paragraph">
@@ -541,7 +547,7 @@ header .info-text .button{
             </div>
             <div class="card">
                 <div class="info">
-                    <img src="./meta.png" alt="" style="width: 100%;">
+                    <img src="./assets/meta.png" alt="" style="width: 100%;">
                     <h1>NV-Llama2-70B-SteerLM-Chat</h1>
                     <p class="paragraph">
                         NV-Llama2-70B-SteerLM-Chat is a large language model by NVIDIA with 70 billion parameters, allowing adjustable chat conversation style.
@@ -559,84 +565,10 @@ header .info-text .button{
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+   
     <script>
         
-        particlesJS("particles", {
-    particles: {
-        number: {
-            value: 100,
-            density: {
-                enable: true,
-                value_area: 800
-            }
-        },
-        color: {
-            value: "#ffffff"
-        },
-        shape: {
-            type: "circle",
-            stroke: {
-                width: 0,
-                color: "#000000"
-            }
-        },
-        opacity: {
-            value: 0.8,
-            random: true,
-            animation: {
-                enable: true,
-                speed: 1,
-                opacity_min: 0,
-                sync: false
-                     }
-        },
-        size: {
-            value: 3,
-            random: true
-              },
-        line_linked: {
-            enable: true,
-            distance: 150,
-            color: "#ffffff",
-            opacity: 0.4,
-            width: 1
-        },
-        move: {
-            enable: true,
-            speed: 2,
-            direction: "none",
-            random: true,
-            straight: false,
-            out_mode: "out",
-            bounce: false,
-        }
-    },
-    interactivity: {
-        detectsOn: "canvas",
-        events: {
-            onHover: {
-                enable: true,
-                mode: "push"
-            },
-            onClick: {
-                enable: true,
-                mode: "push"
-            },
-            resize: true
-        },
-        modes: {
-            repulse: {
-                distance: 100,
-                duration: 0.4
-            },
-            push: {
-                particles_nb: 4
-            }
-        }
-    },
-    retina_detect: true
-});
+      
 
 function scrollToTop() {
     window.scrollTo({

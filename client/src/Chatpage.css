@@ -420,7 +420,11 @@ div a {
   background: linear-gradient(to left, #1C253A, #424A5F, #1C253A);
   background-size: 400% auto;
 }
-
+.generating {
+  animation: gradientAnimation 2.2s linear infinite;
+  background: linear-gradient(to left, #1C253A, #424A5F, #1C253A);
+  background-size: 400% auto;
+}
 
 
 
