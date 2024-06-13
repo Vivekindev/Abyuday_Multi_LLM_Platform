@@ -34,7 +34,7 @@ const ChatPage = () => {
   useEffect(() => {
     const verifyToken = async () => {
       try {
-        const response = await fetch('http://localhost:4040/api/verifyToken', {
+        const response = await fetch('/api/verifyToken', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
