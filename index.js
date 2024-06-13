@@ -15,7 +15,7 @@ const __dirname = path.resolve();
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 4040; // Choose the port you want to use
-
+app.use(cors());
 
 
 app.use(express.static(path.join(__dirname,"./client/dist")));
