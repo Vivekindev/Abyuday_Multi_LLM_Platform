@@ -7,10 +7,11 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<ChatPage props={{name:"sameer"}} />} />
+        <Route path="/chat" element={<ChatPage props={{name:"sameer"}} />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/home' element={<Homepage />} />
+        <Route path='/' element={<Homepage />} />
       </Routes>
     </Router>
   );

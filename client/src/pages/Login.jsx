@@ -47,7 +47,7 @@ const PasswordStrengthExample = () => {
 
           // Redirect to '/chat' route
           setTimeout(()=>{
-            navigateTo('/');
+            navigateTo('/chat');
           },1000);
           
         } else {
