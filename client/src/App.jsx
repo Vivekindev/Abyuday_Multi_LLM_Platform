@@ -10,7 +10,7 @@ const App = () => {
         <Route path="/" element={<ChatPage props={{name:"sameer"}} />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/homepage' element={<Homepage />} />
+        <Route path='/home' element={<Homepage />} />
       </Routes>
     </Router>
   );
