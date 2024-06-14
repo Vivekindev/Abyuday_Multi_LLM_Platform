@@ -96,7 +96,7 @@ const Homepage = () => {
                 Mixtral8x7B is a powerful open-source language model excelling in tasks like code generation and translation. It offers high performance at a fraction of the cost compared to similar models.
               </p>
             </div>
-            <a href="/"><button type="button" className="btn para" onClick={() => setCookie('Model=Mixtral8x7BInstruct')}>Chat</button></a>
+            <a href="/chat"><button type="button" className="btn para" onClick={() => setCookie('Model=Mixtral8x7BInstruct')}>Chat</button></a>
           </div>
           <div className="card">
             <div className="info">
@@ -106,7 +106,7 @@ const Homepage = () => {
                 Mistral 7B Instruct is a large language model fine-tuned for conversation and question answering, built for easy adaptation to new tasks.
               </p>
             </div>
-            <a href="/"><button type="button" className="btn para" onClick={() => setCookie('Model=Mistral7BInstruct')}>Chat</button></a>
+            <a href="/chat"><button type="button" className="btn para" onClick={() => setCookie('Model=Mistral7BInstruct')}>Chat</button></a>
           </div>
           <div className="card">
             <div className="info">
@@ -116,7 +116,7 @@ const Homepage = () => {
                 Llama2 70B is a large language model with 70 billion parameters, trained for conversation and integrated with the Hugging Face Transformers library.
               </p>
             </div>
-            <a href="/"><button type="button" className="btn para" onClick={() => setCookie('Model=Llama270B')}>Chat</button></a>
+            <a href="/chat"><button type="button" className="btn para" onClick={() => setCookie('Model=Llama270B')}>Chat</button></a>
           </div>
           <div className="card">
             <div className="info">
@@ -126,7 +126,7 @@ const Homepage = () => {
                 Code Llama 70B, a Meta LLM, tackles code creation and comprehension. Open-source, it offers general and Python-focused versions, nearing the power of GPT-3.5.
               </p>
             </div>
-            <a href="/"><button type="button" className="btn para" onClick={() => setCookie('Model=CodeLlama70B')}>Chat</button></a>
+            <a href="/chat"><button type="button" className="btn para" onClick={() => setCookie('Model=CodeLlama70B')}>Chat</button></a>
           </div>
           <div className="card">
             <div className="info">
@@ -136,7 +136,7 @@ const Homepage = () => {
                 Code Llama 34B is a large language model, specializing in understanding and generating code. With 34 billion parameters, it's a powerhouse for programmers.
               </p>
             </div>
-            <a href="/"><button type="button" className="btn para" onClick={() => setCookie('Model=CodeLlama34B')}>Chat</button></a>
+            <a href="/chat"><button type="button" className="btn para" onClick={() => setCookie('Model=CodeLlama34B')}>Chat</button></a>
           </div>
           <div className="card">
             <div className="info">
@@ -146,7 +146,7 @@ const Homepage = () => {
                 Code Llama 13B is a large language model (LLM) that generates and understands computer code. At 13 billion parameters, it's a powerful tool for programmers.
               </p>
             </div>
-            <a href="/"><button type="button" className="btn para" onClick={() => setCookie('Model=CodeLlama13B')}>Chat</button></a>
+            <a href="/chat"><button type="button" className="btn para" onClick={() => setCookie('Model=CodeLlama13B')}>Chat</button></a>
           </div>
           <div className="card">
             <div className="info">
@@ -156,7 +156,7 @@ const Homepage = () => {
                 NV-Llama2-70B-RLHF is a large language model by Nvidia with 70 billion parameters, trained to follow instructions and respond to prompts.
               </p>
             </div>
-            <a href="/"><button type="button" className="btn para" onClick={() => setCookie('Model=NVLlama270BRLHF')}>Chat</button></a>
+            <a href="/chat"><button type="button" className="btn para" onClick={() => setCookie('Model=NVLlama270BRLHF')}>Chat</button></a>
           </div>
           <div className="card">
             <div className="info">
@@ -166,7 +166,7 @@ const Homepage = () => {
                 NV-Llama2-70B-SteerLM-Chat is a large language model by NVIDIA with 70 billion parameters, allowing adjustable chat conversation style.
               </p>
             </div>
-            <a href="/"><button type="button" className="btn para" onClick={() => setCookie('Model=NVLlama270BSteerLMChat')}>Chat</button></a>
+            <a href="/chat"><button type="button" className="btn para" onClick={() => setCookie('Model=NVLlama270BSteerLMChat')}>Chat</button></a>
           </div>
         </div>
       </section>
