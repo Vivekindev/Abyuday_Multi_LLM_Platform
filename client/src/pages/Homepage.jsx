@@ -81,7 +81,7 @@ const Homepage = () => {
     });
   }, []);
 
-  if (1) {
+  if (!isLoaded) {
     return <Loading />;
   }
 
