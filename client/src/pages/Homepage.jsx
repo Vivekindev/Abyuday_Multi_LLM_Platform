@@ -6,7 +6,22 @@ import metaImage from '../assets/Homepage/meta.png';
 import videoFile from '../assets/Homepage/gradient.mp4';
 
 const Loading = () => {
-  return <div>Loading...</div>;
+  return (
+    <>
+<div class="center">
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+</div>
+    </>
+  );
 };
 
 const Homepage = () => {
