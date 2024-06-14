@@ -14,7 +14,7 @@ body{
   color: white;
   font-family: 'roboto', sans-serif;
 }
-.App{
+.Appp{
   min-height: 100vh;
   display: flex;
 
@@ -383,7 +383,7 @@ body{
 
 
 
-.navbar {
+.navbarr {
  
  display: none;
   align-items: center;
@@ -490,7 +490,7 @@ html{
   .txt{
     line-height: 4.4rem;
   }
-  .App {
+  .Appp {
     height: 90vh;
     
     
@@ -501,7 +501,7 @@ html{
  
 }  
 
-.navbar{
+.navbarr{
   display: block;
 }
 

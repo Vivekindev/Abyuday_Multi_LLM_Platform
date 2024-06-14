@@ -134,7 +134,7 @@ const divStyle = {
 /*--------------------------------------------------------------------- */
 
   return (
-    <div className="App">
+    <div className="Appp">
       {isVisible && (
         <div className="sideBar">
           <div className="upperSide">
@@ -182,7 +182,7 @@ const divStyle = {
       )}
       {isVisible && (
         <div className="rightPart">
-          <div className="navbar">
+          <div className="navbarr">
             <BasicSelect age={age} setAge={setAge} />
           </div>
           <div className="main">
