@@ -17,6 +17,11 @@ const app = express();
 const port = process.env.PORT || 4040; // Choose the port you want to use
 app.use(cors());
 
+// Middleware to set cache control headers for static assets
+app.use((req, res, next) => {
+    res.setHeader('Cache-Control', 'no-store, must-revalidate');
+    next();
+  });
 
 app.use(express.static(path.join(__dirname,"./client/dist")));
 
