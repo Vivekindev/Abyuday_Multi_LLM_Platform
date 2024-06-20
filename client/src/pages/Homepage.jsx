@@ -4,7 +4,7 @@ import roboLogo from '../assets/Homepage/robotics.svg';
 import mistralImage from '../assets/Homepage/mistral.png';
 import metaImage from '../assets/Homepage/meta.png';
 import videoFile from '../assets/Homepage/gradient.mp4';
-
+import Footer from '../components/Footer'
 const Loading = () => {
   return (
     <>
@@ -223,6 +223,7 @@ const Homepage = () => {
           </button>
         )}
       </div>
+      
     </>
   );
 };
