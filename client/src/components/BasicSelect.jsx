@@ -75,7 +75,8 @@ const BasicSelect = ({ age, setAge }) => {
             borderRadius: '0.5rem',
              // Set border radius for the select component
           }}
-        >
+        > 
+          <MenuItem value={"GoogleGemini(InternetAccessEnabled)"} style={{ fontSize: isMobile ? '2.5rem': '1.3rem' }}>Google Gemini (Internet Access Enabled)</MenuItem>
           <MenuItem value={"Mixtral8x7BInstruct"} style={{ fontSize: isMobile ? '2.5rem': '1.3rem' }}>Mixtral 8x7B Instruct</MenuItem>
           <MenuItem value={"Mistral7BInstruct"}style={{ fontSize: isMobile ? '2.5rem': '1.3rem' }}>Mistral 7B Instruct</MenuItem>
           <MenuItem value={"Llama270B"}style={{ fontSize: isMobile ? '2.5rem': '1.3rem' }}>Llama 2 70B</MenuItem>

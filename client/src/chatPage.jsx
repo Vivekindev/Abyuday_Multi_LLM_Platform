@@ -219,7 +219,7 @@ const divStyle = {
                   <img src={sendBtn} alt="Send" />
                 </button>
               </div>
-              <p>It may produce inaccurate information about people, places, or facts. AbyuDAY January 2024 version</p>
+              <div style={{fontSize:"1.3rem",marginTop:"1rem",marginBottom:"1rem",color:"#E1D9D1"}}>It may produce inaccurate information about people, places or facts. © Abyuday (June 2024 version)</div>
             </div>
           </div>
           <div className="inpPad">

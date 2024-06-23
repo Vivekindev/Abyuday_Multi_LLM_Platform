@@ -9,6 +9,7 @@ import pushToDb from './functions/db.js';
 import getIST from './functions/getIST.js'
 
 import {sendRequest} from './functions/nvidia.js';
+import { runQuery } from './functions/searchAndQuery.js';
 
 const __dirname = path.resolve();
 
@@ -90,6 +91,17 @@ app.post("/api/:modelName",authenticateToken, async (req, res) => {
         res.status(400).send("Invalid request format. Please provide a user message in the request body.");
         return;
     }
+
+  if(model === "GoogleGemini(InternetAccessEnabled)"){
+    try {
+        const answer = await runQuery(userMessage);
+        res.json(answer);
+    } catch (error) {
+        console.error('Error during query execution:', error);
+        res.status(500).send("Internal server error. Please try again later.");
+    }
+  }
+  else{
     try {
         const responseMessage = await sendRequest(userMessage,model);
         res.json(responseMessage);
@@ -98,6 +110,8 @@ app.post("/api/:modelName",authenticateToken, async (req, res) => {
         console.error(error);
         res.status(500).send("Error processing the request.");
     }
+  }
+    
 });
 
 
