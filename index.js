@@ -94,8 +94,9 @@ app.post("/api/:modelName",authenticateToken, async (req, res) => {
 
   if(model === "GoogleGemini(InternetAccessEnabled)"){
     try {
-        const answer = await runQuery(userMessage);
-        res.json(answer);
+        const responseMessage = await runQuery(userMessage);
+        res.json(responseMessage);
+        pushToDb(userMessage,responseMessage,getIST());
     } catch (error) {
         console.error('Error during query execution:', error);
         res.status(500).send("Internal server error. Please try again later.");

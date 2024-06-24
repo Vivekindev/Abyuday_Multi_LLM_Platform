@@ -3,6 +3,7 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 import dotenv from 'dotenv';
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from '@google/generative-ai';
+import rateLimit from 'axios-rate-limit';
 
 dotenv.config();
 
@@ -15,7 +16,7 @@ const genAI = new GoogleGenerativeAI(geminiApiKey);
 
 const model = genAI.getGenerativeModel({
   model: 'gemini-1.5-flash-latest',
-  systemInstruction: 'you are an assistant',
+  systemInstruction: 'you are an assistant, If asked real time data or current time data, tell according to the data provided',
 });
 
 const generationConfig = {
@@ -60,10 +61,18 @@ const googleSearch = async (query) => {
   }
 };
 
+// Create a rate-limited Axios instance
+const http = rateLimit(axios.create(), { maxRequests: 5, perMilliseconds: 1000 });
+
 // Scrape content from a URL
 const scrapeContent = async (url) => {
   try {
-    const { data } = await axios.get(url);
+    const { data } = await http.get(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+      },
+      withCredentials: true, // Handle cookies
+    });
     const $ = cheerio.load(data);
     let textContent = '';
 
@@ -75,7 +84,7 @@ const scrapeContent = async (url) => {
     // Remove extra whitespace and return the cleaned content
     return textContent.replace(/\s+/g, ' ').trim();
   } catch (error) {
-    console.error(`Error scraping ${url}:`, error);
+    console.error(`Error scraping ${url}:`, error.message);
   }
 };
 
@@ -93,7 +102,7 @@ const queryGemini = async (context, question) => {
       {
         role: 'model',
         parts: [
-          { text: 'I have gathered the following information from the web. How can I help you with it?' },
+          { text: 'You have gathered the following information from the web. How can I help you with it?' },
         ],
       },
       {
@@ -112,7 +121,7 @@ const queryGemini = async (context, question) => {
 // Main function to search, scrape, and query
 const runQuery = async (queryQues) => {
   const searchQuery = queryQues;
-  const question = queryQues + ' provide the source at end in this format: [Website Name : *****link*****]';
+  const question = queryQues + ' provide the source at end in this format: Website Name : *****link*****';
 
   try {
     const searchResults = await googleSearch(searchQuery);
