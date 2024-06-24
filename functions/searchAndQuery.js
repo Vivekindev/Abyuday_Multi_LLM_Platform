@@ -1,5 +1,3 @@
-// searchAndQuery.js
-
 import { google } from 'googleapis';
 import axios from 'axios';
 import cheerio from 'cheerio';
@@ -114,21 +112,26 @@ const queryGemini = async (context, question) => {
 // Main function to search, scrape, and query
 const runQuery = async (queryQues) => {
   const searchQuery = queryQues;
-  const question = queryQues + ' provide the source at end in this format: [Website Name : link], make the link url to be in this format: *****link*****';
+  const question = queryQues + ' provide the source at end in this format: [Website Name : *****link*****]';
 
-  const searchResults = await googleSearch(searchQuery);
-  if (searchResults) {
-    const urls = searchResults.slice(0, 2).map(item => item.link);
-    let context = '';
-    for (const url of urls) {
-      const content = await scrapeContent(url);
-      context += content + '\n';
+  try {
+    const searchResults = await googleSearch(searchQuery);
+    if (searchResults) {
+      const urls = searchResults.slice(0, 2).map(item => item.link);
+      let context = '';
+      for (const url of urls) {
+        const content = await scrapeContent(url);
+        context += content + '\n';
+      }
+
+      const answer = await queryGemini(context, question);
+      return answer;
+    } else {
+      return 'No results found.';
     }
-
-    const answer = await queryGemini(context, question);
-    return answer;
-  } else {
-    return 'No results found.';
+  } catch (error) {
+    console.error('Error during runQuery execution:', error);
+    throw error;
   }
 };
 
