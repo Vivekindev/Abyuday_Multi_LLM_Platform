@@ -94,7 +94,7 @@ app.post("/api/:modelName",authenticateToken, async (req, res) => {
   if(model === "GoogleGemini(InternetAccessEnabled)"){
     try {
         const responseMessage = await runQuery(userMessage);
-        pushToDb(userMessage,responseMessage,getIST());
+       await pushToDb(userMessage,responseMessage,getIST());
         res.json(responseMessage);
         
     } catch (error) {
@@ -105,7 +105,7 @@ app.post("/api/:modelName",authenticateToken, async (req, res) => {
   else{
     try {
         const responseMessage = await sendRequest(userMessage,model);
-        pushToDb(userMessage,responseMessage,getIST());
+        await pushToDb(userMessage,responseMessage,getIST());
         res.json(responseMessage);
     } catch (error) {
         console.error(error);
