@@ -1,10 +1,9 @@
 import express from "express";
-import fetch from "node-fetch";
 import cors from "cors";
 import path from 'path';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-
+import connectDB from './db/db.js';
 import pushToDb from './functions/db.js';
 import getIST from './functions/getIST.js'
 
@@ -15,7 +14,7 @@ const __dirname = path.resolve();
 
 dotenv.config();
 const app = express();
-const port = process.env.PORT || 4040; // Choose the port you want to use
+const PORT = process.env.PORT || 4040; // Choose the port you want to use
 app.use(cors());
 
 // Middleware to set cache control headers for static assets
@@ -139,9 +138,14 @@ function generateAccessToken(user) {
 }
 
 //-------------------------------------------------------------------------------------------------//
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+// Connect to the database and start the server
+connectDB()
+  .then(() => {
+    app.listen(PORT, () =>
+      console.log(`Server is up and running on the port ${PORT}`)
+    );
+  })
+  .catch((err) => console.log(err));
 
 //Middleware function
 function authenticateToken(req, res, next) {

@@ -1,28 +1,11 @@
 import mongoose from 'mongoose';
-
-// Define schema for your data
-const exampleSchema = new mongoose.Schema({
-  prompt: String,
-  response: String,
-  date: String
-});
-
-// Define a model based on the schema
-const ExampleModel = mongoose.model('Example', exampleSchema);
-
-const uri = "mongodb+srv://Cluster0:EPo4F0M5pOUN7wxg@cluster0.y6cbdhr.mongodb.net/?retryWrites=true&w=majority";
-const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
-
-// Connect to MongoDB
-mongoose.connect(uri, clientOptions)
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(error => console.error('Error connecting to MongoDB:', error));
+import promptData from '../models/promptData.js'
 
 // Route to handle POST requests containing data to write to the database
 const pushToDb = async (prompt,response,date)=> {
     try {
         // Create an instance of ExampleModel with the extracted data
-        const newData = new ExampleModel({
+        const newData = new promptData({
          prompt,
          response,
          date
