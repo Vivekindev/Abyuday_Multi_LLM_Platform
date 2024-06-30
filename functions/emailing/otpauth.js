@@ -50,11 +50,11 @@ const sendOtpEmail = async (recipientEmail, otp) => {
                                                 ${otp}
                                             </div>
                                             <p style="padding-top: 16px; padding-bottom: 16px;">If you didn’t request this, you can ignore this email.</p>
-                                            <p style="padding-bottom: 16px;">Thanks,<br>The Abyuday team</p>
+                                            <p style="padding-bottom: 16px;"><b>Thanks !</b></p>
                                         </div>
                                     </div>
-                                    <div style="padding-top: 20px; color: rgb(153, 153, 153); text-align: center;">
-                                        <p style="padding-bottom: 16px;">Made with ♥ in India</p>
+                                    <div style="padding-top: 10px; color: rgb(153, 153, 153); text-align: center;">
+                                        <p style="padding-bottom: 0px;">© Abyuday 2024</p>
                                     </div>
                                 </td>
                             </tr>
