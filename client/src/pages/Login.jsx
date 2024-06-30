@@ -22,7 +22,7 @@ const PasswordStrengthExample = () => {
     }
 
     const data = {
-      username: email,
+      email: email,
       password: password
     }
 
@@ -101,11 +101,11 @@ const PasswordStrengthExample = () => {
             <button className="control" type="button" onClick={handleLogin}>
               <b>Login</b>
             </button>
-
+            <a href="/register">
             <button className="control" type="button">
               <b>New User?</b>
             </button>
-
+            </a>
           </form>
         </div>
       </div>

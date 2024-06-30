@@ -4,9 +4,11 @@ import path from 'path';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import connectDB from './db/db.js';
-import pushToDb from './functions/db.js';
+
+
 import getIST from './functions/getIST.js'
 
+import { pushToDb, registerUser, authenticateUser } from './functions/db.js';
 import {sendRequest} from './functions/nvidia.js';
 import { runQuery } from './functions/searchAndQuery.js';
 
@@ -45,41 +47,42 @@ app.use(express.json());
 app.post('/api/verifyToken',authenticateToken,(req,res)=>{
     res.sendStatus(200);
 })
-app.post("/api/login",(req,res)=>{
-    const username = req.body.username;
+//----------------------------------------------------------------------------------------------
+app.post("/api/login", async (req, res) => {
+    const email = req.body.email;
     const password = req.body.password;
-    let found = false;
-    userBase.map(item =>{
-        if(item.username === username && item.password === password){
-            
-            const user = { username: username };
-            const accessToken =  generateAccessToken(user);
+
+    try {
+        const user = await authenticateUser(email, password);
+
+        if (user) {
+            const accessToken = generateAccessToken({ email: user.email });
             res.setHeader('Authorization', 'Bearer ' + accessToken);
             res.sendStatus(200);
-            found = true;
-        }   
-    })
-    if(!found)
-    res.sendStatus(401);
-})
-app.post('/api/register', (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
-    let found = false;
-    userBase.forEach(item => {
-        if (item.username == username) {
-            found = true;
+        } else {
+            res.sendStatus(401); // Unauthorized
         }
-    })
-    if (!found) {
-        userBase.push({ username: username, password: password });
-      
-        const user = { username: username };
-        const accessToken =  generateAccessToken(user);
-        res.json({ accessToken: accessToken});
-    } 
-    else {
-        res.sendStatus(409);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+//----------------------------------------------------------------------------------------------
+
+app.post('/api/register', async(req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        await registerUser(email, password);
+        const accessToken = generateAccessToken({ email });
+        res.setHeader('Authorization', 'Bearer ' + accessToken);
+        res.sendStatus(200);
+    } catch (error) {
+        if (error.message === 'Email already registered') {
+            res.status(409).json({ message: error.message }); // 409 Conflict
+        } else {
+            res.status(500).json({ message: 'Internal server error' });
+        }
     }
 })
 
@@ -118,19 +121,6 @@ app.post("/api/:modelName",authenticateToken, async (req, res) => {
 
 
 //----------------------------------------------authServer-------------------------------------------//
-const userBase = [
-    {
-        "username": "vivek@gmail.com",
-        "password": "abc"
-    },
-    {
-        "username": "mohan",
-        "password": "def"
-    }
-];
-
-
-
 
 
 function generateAccessToken(user) {
@@ -146,6 +136,7 @@ connectDB()
     );
   })
   .catch((err) => console.log(err));
+//-------------------------------------------------------------------------------------------------//
 
 //Middleware function
 function authenticateToken(req, res, next) {
