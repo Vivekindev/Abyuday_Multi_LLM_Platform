@@ -119,8 +119,8 @@ header .info-text h4{
 }
 header .info-text .scroll{
     position: absolute;
-    bottom: 20%;
-    left: 50%;
+    bottom: 15%;
+    left: 49.6%;
     color: #fff;
     transform: translate(0, -50%);
     transition: all 0.5s;
@@ -145,7 +145,7 @@ header .info-text .scroll::before{
 /*---------------------header button--------------------------*/
 header .info-text .button{
     position: absolute;
-    top : 55%;
+    top : 65%;
     
 }
 
