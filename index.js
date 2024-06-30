@@ -9,6 +9,7 @@ import connectDB from './db/db.js';
 import getIST from './functions/getIST.js'
 
 import { pushToDb, registerUser, authenticateUser } from './functions/db.js';
+import {sendOtpEmail} from './functions/emailing/otpauth.js';
 import {sendRequest} from './functions/nvidia.js';
 import { runQuery } from './functions/searchAndQuery.js';
 
@@ -44,6 +45,15 @@ res.status(500).send(err);
 
 
 app.use(express.json());
+//----------------------------------------------------------------------------------------------
+app.post('/api/otpverification',async(req,res)=>{
+    const {email,otp} = req.body;
+    console.log(email);
+    console.log(otp);
+    await sendOtpEmail(email,otp);
+    res.sendStatus(200);
+})
+//----------------------------------------------------------------------------------------------
 app.post('/api/verifyToken',authenticateToken,(req,res)=>{
     res.sendStatus(200);
 })
