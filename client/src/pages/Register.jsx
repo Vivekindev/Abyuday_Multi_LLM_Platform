@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import logo from "../assets/regLogo.svg";
 import "./Register.css";
@@ -53,6 +53,7 @@ const PasswordStrengthExample = () => {
   const [otp, setOtp] = useState("");
   const [generatedOtp, setGeneratedOtp] = useState("");
   const [step, setStep] = useState("register");
+  const [loading, setLoading] = useState(false); // Track loading state
   const navigateTo = useNavigate();
 
   const handleEmailChange = (event) => setEmail(event.target.value);
@@ -76,6 +77,7 @@ const PasswordStrengthExample = () => {
       return;
     }
 
+    setLoading(true); // Start loading
     const otp = generateOtp();
     try {
       await axios.post('/api/otpverification', { email, otp });
@@ -84,10 +86,13 @@ const PasswordStrengthExample = () => {
     } catch (error) {
       const errorMessage = error.response?.data?.message || "An error occurred";
       toast.error(errorMessage);
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
   const registerData = async () => {
+    setLoading(true); // Start loading
     try {
       const response = await axios.post('/api/register', { email, password });
       const token = response.headers['authorization'];
@@ -100,6 +105,8 @@ const PasswordStrengthExample = () => {
     } catch (error) {
       const errorMessage = error.response?.data?.message || "An error occurred";
       toast.error(errorMessage);
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
@@ -136,8 +143,8 @@ const PasswordStrengthExample = () => {
                   placeholder="Enter Password"
                   onChange={handlePasswordChange}
                 />
-                <button className="control" type="button" onClick={initiateRegistration}>
-                  <b>Register</b>
+                <button className="control" type="button" onClick={initiateRegistration} disabled={loading}>
+                  {loading ? "Processing..." : <b>Register</b>}
                 </button>
                 <a href='./login'>
                   <button className="control" type="button">
@@ -155,8 +162,8 @@ const PasswordStrengthExample = () => {
                   value={otp}
                   onChange={handleOtpChange}
                 />
-                <button className="control" type="button" onClick={verifyOtp}>
-                  <b>Verify OTP</b>
+                <button className="control" type="button" onClick={verifyOtp} disabled={loading}>
+                  {loading ? "Verifying..." : <b>Verify OTP</b>}
                 </button>
               </>
             )}
