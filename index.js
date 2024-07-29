@@ -55,7 +55,7 @@ app.post('/api/otpverification',async(req,res)=>{
 })
 //----------------------------------------------------------------------------------------------
 app.post('/api/verifyToken',authenticateToken,(req,res)=>{
-    res.sendStatus(200);
+    res.status(200).json(req.user);
 })
 //----------------------------------------------------------------------------------------------
 app.post("/api/login", async (req, res) => {

@@ -13,7 +13,7 @@ const llmModels = {
    }
 
 const openai = new OpenAI({
-  apiKey: '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',
+  apiKey: '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',
   baseURL: 'https://integrate.api.nvidia.com/v1',
 })
 
