@@ -131,7 +131,7 @@ const ChatPage = () => {
           <div className="upperSide">
             <div className="upperSideTop">
               <img src={gptLogo} alt='logo' className="logo" />
-              <span className="brand">ABYUDAY</span>
+              <span className="brand jaro" style={{fontSize:'3.5rem',fontWeight:'500',animation:'none',opacity:'100%'}}>ABYUDAY</span>
             </div>
             <button className="midBtn" onClick={() => { window.location.reload() }}>
               <img src={addBtn} alt="new Chat" className="addBtn" /> New Chat
