@@ -2,7 +2,7 @@ import OpenAI from 'openai';
 
 const llmModels = {
     "Mixtral8x22BInstruct" : "mistralai/mixtral-8x22b-instruct-v0.1",
-    "Mixtral8x7BInstruct" : "misstralai/mixtral-8x7b-instruct-v0.1",
+    "Mixtral8x7BInstruct" : "mistralai/mixtral-8x7b-instruct-v0.1",
     "Mistral7BInstruct" : "mistralai/mistral-7b-instruct-v0.2",
     "llama-3.1-405b-instruct"  : "meta/llama-3.1-405b-instruct",
     "llama-3.1-8b-instruct" : "meta/llama-3.1-8b-instruct",
