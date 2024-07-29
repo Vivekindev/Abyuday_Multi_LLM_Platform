@@ -100,6 +100,7 @@ const ChatPage = () => {
     ]);
     setLoading(true);
     try {
+      msgEnd.current.scrollIntoView({ behavior: "smooth" });
       const res = await sendMsgToNvidia(text, age);
       setMessages(prevMessages => [
         ...prevMessages.slice(0, -1),
