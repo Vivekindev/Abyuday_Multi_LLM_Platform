@@ -76,15 +76,14 @@ const BasicSelect = ({ age, setAge }) => {
              // Set border radius for the select component
           }}
         > 
-          <MenuItem value={"GoogleGemini(InternetAccessEnabled)"} style={{ fontSize: isMobile ? '2.5rem': '1.3rem' }}>Google Gemini (Internet Access Enabled)</MenuItem>
+          <MenuItem value={"GoogleGemini(InternetAccessEnabled)"} style={{ fontSize: isMobile ? '2.5rem': '1.3rem' }}>Google Gemini 1.5 Flash (Web Search)</MenuItem>
+          <MenuItem value={"Google-gemma-2-9b"}style={{ fontSize: isMobile ? '2.5rem': '1.3rem' }}>Google Gemma2 9B</MenuItem>
+          <MenuItem value={"Mixtral8x22BInstruct"}style={{ fontSize: isMobile ? '2.5rem': '1.3rem' }}>Mixtral 8x22B Instruct</MenuItem>
           <MenuItem value={"Mixtral8x7BInstruct"} style={{ fontSize: isMobile ? '2.5rem': '1.3rem' }}>Mixtral 8x7B Instruct</MenuItem>
           <MenuItem value={"Mistral7BInstruct"}style={{ fontSize: isMobile ? '2.5rem': '1.3rem' }}>Mistral 7B Instruct</MenuItem>
-          <MenuItem value={"Llama270B"}style={{ fontSize: isMobile ? '2.5rem': '1.3rem' }}>Llama 2 70B</MenuItem>
-          <MenuItem value={"CodeLlama70B"}style={{ fontSize: isMobile ? '2.5rem': '1.3rem' }}>Code Llama 70B</MenuItem>
-          <MenuItem value={"CodeLlama34B"}style={{ fontSize: isMobile ? '2.5rem': '1.3rem' }}>Code Llama 34B</MenuItem>
-          <MenuItem value={"CodeLlama13B"}style={{ fontSize: isMobile ? '2.5rem': '1.3rem' }}>Code Llama 13B</MenuItem>
-          <MenuItem value={"NVLlama270BRLHF"}style={{ fontSize: isMobile ? '2.5rem': '1.3rem' }}>NV-Llama2-70B-RLHF</MenuItem>
-          <MenuItem value={"NVLlama270BSteerLMChat"}style={{ fontSize: isMobile ? '2.5rem': '1.3rem' }}>NV-Llama2-70B-SteerLM-Chat</MenuItem>
+          <MenuItem value={"llama-3.1-405b-instruct"}style={{ fontSize: isMobile ? '2.5rem': '1.3rem' }}>Llama 3.1 405B Instruct</MenuItem>
+          <MenuItem value={"llama-3.1-8b-instruct"}style={{ fontSize: isMobile ? '2.5rem': '1.3rem' }}>Llama 3.1 8B Instruct</MenuItem>
+          
         </Select>
       </FormControl>
     </Box>  

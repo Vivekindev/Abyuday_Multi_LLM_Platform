@@ -228,8 +228,9 @@ body{
 }
 .bot{
   background: rgb(28, 37, 58);
-  width: 100%;
+  width: 98%;
   border-radius: 0.5rem;
+ 
 }
 .chatImg{
   object-fit: cover;
@@ -514,6 +515,14 @@ html{
 .mob{
   display: flex;
 }
+}
+
+
+
+/* Chatpage.css */
+.chat.bot.error {
+  background-color: #440b10;
+  border: 1px solid red; 
 }
 
 

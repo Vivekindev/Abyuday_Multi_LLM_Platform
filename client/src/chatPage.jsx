@@ -29,7 +29,8 @@ const ChatPage = () => {
       isBot: true,
     }
   ]);
- 
+  const [age, setAge] = useState('Mixtral8x7BInstruct'); // Initialize SELECT model state
+  const [isVisibleEg, setIsVisibleEg] = useState(true);
 
   useEffect(() => {
     const verifyToken = async () => {
@@ -65,12 +66,20 @@ const ChatPage = () => {
     ]);
     setLoading(true);
     msgEnd.current.scrollIntoView({ behavior: "smooth" });
-    const res = await sendMsgToNvidia(text, age);
-    setLoading(false);
-    setMessages(prevMessages => [
-      ...prevMessages.slice(0, -1),
-      { text: res, isBot: true }
-    ]);
+    try {
+      const res = await sendMsgToNvidia(text, age);
+      setMessages(prevMessages => [
+        ...prevMessages.slice(0, -1),
+        { text: res, isBot: true }
+      ]);
+    } catch (error) {
+      setMessages(prevMessages => [
+        ...prevMessages.slice(0, -1),
+        { text: "Error occurred, Try Refreshing page", isBot: true, isError: true }
+      ]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleEnter = async (e) => {
@@ -90,48 +99,30 @@ const ChatPage = () => {
       { text: "Generating...", isBot: true }
     ]);
     setLoading(true);
-    const res = await sendMsgToNvidia(text, age);
-    setLoading(false);
-    setMessages(prevMessages => [
-      ...prevMessages.slice(0, -1),
-      { text: res, isBot: true }
-    ]);
-
+    try {
+      const res = await sendMsgToNvidia(text, age);
+      setMessages(prevMessages => [
+        ...prevMessages.slice(0, -1),
+        { text: res, isBot: true }
+      ]);
+    } catch (error) {
+      setMessages(prevMessages => [
+        ...prevMessages.slice(0, -1),
+        { text: "Error occurred, Try Refreshing page", isBot: true, isError: true }
+      ]);
+    } finally {
+      setLoading(false);
+    }
     msgEnd.current.scrollIntoView({ behavior: "smooth" });
   };
 
-   //-------------------------------Cookie-start---------------------------------------------------
-   let cookieString = document.cookie;
-   let model = "";
-   // Define the regular expression pattern
-   const pattern = /Model=([^;]+)/;
- 
- // Search for the pattern in the string
- const match = cookieString.match(pattern);
- 
- // If a match is found, extract the model name
- if (match) {
-      model = match[1];   
- } else {
-      model = "Mixtral8x7BInstruct";
- }
- 
-   const [age, setAge] = useState(model); // Initialize SELECT model state
-   //---------------------------------end-------------------------------------------------
+  const toggleVisibility = () => {
+    setIsVisibleEg(!isVisibleEg);
+  };
 
-   /*---------------------------mobilePrompt----------------------------- */
-const [isVisibleEg, setIsVisibleEg] = useState(true);
-  
-const toggleVisibility = () => {
-  if(isVisibleEg)
-  setIsVisibleEg(!isVisibleEg);
-};
-
-const divStyle = {
-
-  display: isVisibleEg ? 'flex' : 'none'
-};
-/*--------------------------------------------------------------------- */
+  const divStyle = {
+    display: isVisibleEg ? 'flex' : 'none'
+  };
 
   return (
     <div className="Appp">
@@ -161,22 +152,21 @@ const divStyle = {
             </div>
           </div>
           <div className="lowerSide">
-          <a href="/login">
+            <a href="/login">
               <button className="query bottomQuery " onClick={() => localStorage.setItem('accessToken', '')}>
-                <img src={logout} alt="query"  className="listItemsImg"/>Logout
+                <img src={logout} alt="query" className="listItemsImg" />Logout
               </button>
             </a>
             <a href="/home#features">
-              <button className="query bottomQuery "  >
-                <img src={thunder} alt="query"  className="listItemsImg"/>Models
+              <button className="query bottomQuery ">
+                <img src={thunder} alt="query" className="listItemsImg" />Models
               </button>
             </a>
             <a href="/home">
-              <button className="query bottomQuery "  >
-                <img src={home} alt="query"  className="listItemsImg"/>Home
+              <button className="query bottomQuery ">
+                <img src={home} alt="query" className="listItemsImg" />Home
               </button>
             </a>
-            
           </div>
         </div>
       )}
@@ -189,27 +179,27 @@ const divStyle = {
             <div className="select"><BasicSelect age={age} setAge={setAge} /></div>
             <div className="chats">
               {messages.map((message, i) => (
-                <div key={i} className={message.isBot && message.text === "Generating..." ? "chat bot generating" : message.isBot ? "chat bot" : "chat"}>
+                <div key={i} className={message.isBot && message.text === "Generating..." ? "chat bot generating" : message.isError ? "chat bot error" : message.isBot ? "chat bot" : "chat"}>
                   <img className="chatImg" src={message.isBot ? gptImgLogo : userIcon} alt="" />
                   <p className="txt" style={{ whiteSpace: 'pre-line', maxWidth: '87%', overflow: 'hidden' }}>
                     {formatMessage(message.text)}
                   </p>
                 </div>
               ))}
-               <div className="egPrompt" style={divStyle}>
-          <button className="query mob" value={"What are Data Structures?"} onClick={(e) => { handleQuery(e); toggleVisibility(); }}>
-              <img src={msgIcon} alt="query" />What are Data Structures?
-            </button>
-            <button className="query mob" value={"What is Computer Networks?"} onClick={(e) => { handleQuery(e); toggleVisibility(); }}>
-              <img src={msgIcon} alt="query" />What is Computer Networks?
-            </button>
-            <button className="query mob" value={"What is Websocket?"} onClick={(e) => { handleQuery(e); toggleVisibility(); }}>
-              <img src={msgIcon} alt="query" />What is Websocket?
-            </button>
-            <button className="query mob" value={"Generate code to Fetch Data Asynchronously from an API in Javascript"} onClick={(e) => { handleQuery(e); toggleVisibility(); }}>
-              <img src={msgIcon} alt="query" />Generate a Code in JS
-            </button>
-          </div>
+              <div className="egPrompt" style={divStyle}>
+                <button className="query mob" value={"What are Data Structures?"} onClick={(e) => { handleQuery(e); toggleVisibility(); }}>
+                  <img src={msgIcon} alt="query" />What are Data Structures?
+                </button>
+                <button className="query mob" value={"What is Computer Networks?"} onClick={(e) => { handleQuery(e); toggleVisibility(); }}>
+                  <img src={msgIcon} alt="query" />What is Computer Networks?
+                </button>
+                <button className="query mob" value={"What is Websocket?"} onClick={(e) => { handleQuery(e); toggleVisibility(); }}>
+                  <img src={msgIcon} alt="query" />What is Websocket?
+                </button>
+                <button className="query mob" value={"Generate code to Fetch Data Asynchronously from an API in Javascript"} onClick={(e) => { handleQuery(e); toggleVisibility(); }}>
+                  <img src={msgIcon} alt="query" />Generate a Code in JS
+                </button>
+              </div>
               <div ref={msgEnd}></div>
             </div>
             <div className="chatFooter">
@@ -219,7 +209,7 @@ const divStyle = {
                   <img src={sendBtn} alt="Send" />
                 </button>
               </div>
-              <div style={{fontSize:"1.3rem",marginTop:"1rem",marginBottom:"1rem",color:"#E1D9D1"}}>It may produce inaccurate information about people, places or facts. © Abyuday (June 2024 version)</div>
+              <div style={{ fontSize: "1.3rem", marginTop: "1rem", marginBottom: "1rem", color: "#E1D9D1" }}>It may produce inaccurate information about people, places or facts. © Abyuday (June 2024 version)</div>
             </div>
           </div>
           <div className="inpPad">

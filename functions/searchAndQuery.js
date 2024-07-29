@@ -1,9 +1,9 @@
 import { google } from 'googleapis';
-import axios from 'axios';
-import cheerio from 'cheerio';
 import dotenv from 'dotenv';
+import puppeteer from 'puppeteer';
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from '@google/generative-ai';
 import rateLimit from 'axios-rate-limit';
+import axios from 'axios';
 
 dotenv.config();
 
@@ -64,26 +64,46 @@ const googleSearch = async (query) => {
 // Create a rate-limited Axios instance
 const http = rateLimit(axios.create(), { maxRequests: 5, perMilliseconds: 1000 });
 
-// Scrape content from a URL
+// Scrape content from a URL using Puppeteer
 const scrapeContent = async (url) => {
+  let browser;
   try {
-    const { data } = await http.get(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-      },
-      withCredentials: true, // Handle cookies
+    browser = await puppeteer.launch({
+      headless: true, // Set to false if you want to see the browser in action
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
-    const $ = cheerio.load(data);
-    let textContent = '';
-
-    // Extract text from specific elements
-    $('p, h1, h2, h3, h4, h5, h6, article, section').each((i, elem) => {
-      textContent += $(elem).text() + '\n';
+    const page = await browser.newPage();
+    
+    // Disable loading images and CSS for faster scraping
+    await page.setRequestInterception(true);
+    page.on('request', (req) => {
+      if (req.resourceType() === 'image' || req.resourceType() === 'stylesheet' || req.resourceType() === 'font') {
+        req.abort();
+      } else {
+        req.continue();
+      }
     });
 
-    // Remove extra whitespace and return the cleaned content
-    return textContent.replace(/\s+/g, ' ').trim();
+    await page.goto(url, {
+      waitUntil: 'networkidle2', // Wait for network to be idle
+    });
+
+    // Extract text from the page
+    const textContent = await page.evaluate(() => {
+      let text = '';
+      const elements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, article, section');
+      elements.forEach(element => {
+        text += element.innerText + '\n';
+      });
+      return text.replace(/\s+/g, ' ').trim();
+    });
+
+    await browser.close();
+    return textContent;
   } catch (error) {
+    if (browser) {
+      await browser.close();
+    }
     console.error(`Error scraping ${url}:`, error.message);
   }
 };
@@ -128,10 +148,11 @@ const runQuery = async (queryQues) => {
     if (searchResults) {
       const urls = searchResults.slice(0, 2).map(item => item.link);
       let context = '';
-      for (const url of urls) {
-        const content = await scrapeContent(url);
-        context += content + '\n';
-      }
+      
+      // Parallelize the scraping tasks
+      const scrapePromises = urls.map(url => scrapeContent(url));
+      const scrapedContents = await Promise.all(scrapePromises);
+      context = scrapedContents.join('\n');
 
       const answer = await queryGemini(context, question);
       return answer;
