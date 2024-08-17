@@ -89,7 +89,8 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { session: false, failureRedirect: '/' }),
   (req, res) => {
     const accessToken = generateAccessToken({ email: req.user.email });
-    res.redirect(`/chat?token=${accessToken}`); // Redirect with the token in the URL
+    res.cookie('accessToken', accessToken);
+    res.redirect(`/chat`); // Redirect with the token in the URL
   }
 );
 

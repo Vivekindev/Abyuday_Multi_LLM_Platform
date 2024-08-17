@@ -34,19 +34,20 @@ const ChatPage = () => {
 
 
   useEffect(() => {
-    // Extract the token from the URL
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get('token');
-    
+    // Function to get a cookie by name
+    const getCookie = (name) => {
+      const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      return match ? match[2] : null;
+    };
 
+    // Read the accessToken cookie
+    const token = getCookie('accessToken');
+
+    // Save the token to localStorage if it exists
     if (token) {
-      // Store the token in localStorage
       localStorage.setItem('accessToken', `Bearer ${token}`);
-
-      // Redirect to the desired route (e.g., '/chat' without the token in the URL)
-      navigateTo('/chat');
-    } 
-  }, [navigateTo]);
+    }
+  }, []);
 
   useEffect(() => {
     const verifyToken = async () => {
