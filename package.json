@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "devstart": "nodemon index.js",
+    "startdev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -25,10 +25,11 @@
     "googleapis": "^140.0.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.1.1",
-   
     "node-fetch": "^3.3.2",
     "nodemailer": "^6.9.14",
     "openai": "^4.48.3",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
     "path": "^0.12.7",
     "puppeteer": "^22.14.0",
     "stream": "^0.0.2",

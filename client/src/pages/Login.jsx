@@ -5,14 +5,13 @@ import logo from "../assets/regLogo.svg";
 import "./Register.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { FaGoogle } from "react-icons/fa";
 const PasswordStrengthExample = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigateTo = useNavigate();
 
   const handleLogin = async () => {
-    // Email format validation using regular expression
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email || !password) {
       toast.error("Please fill in all fields");
@@ -22,10 +21,7 @@ const PasswordStrengthExample = () => {
       return;
     }
 
-    const data = {
-      email: email,
-      password: password
-    }
+    const data = { email, password };
 
     try {
       const response = await axios.post('/api/login', data, {
@@ -35,32 +31,23 @@ const PasswordStrengthExample = () => {
       });
 
       if (response.status === 200) {
-        // Extract the token from the Authorization header
         const token = response.headers['authorization'];
-        console.log(token); // Log the Authorization token
-
-        // Log the response body
-        console.log(response.data); 
-
-        // Assuming you want to store the token in local storage
         localStorage.setItem('accessToken', token);
-
-        // If response is successful, show success toast
         toast.success("Login Successful");
 
-        // Redirect to '/chat' route
         setTimeout(() => {
           navigateTo('/chat');
         }, 1000);
-
-      } else {
-        // If response is not successful, show error toast
-        toast.error("Login Failed");
+      } else if(response.status === 401){
+        toast.error("Incorrect Password");
       }
     } catch (error) {
-      console.error('Error:', error);
-      toast.error("An error occurred");
+      toast.error("Unauthorised !");
     }
+  };
+
+  const handleGoogleLogin = () => {
+    window.location.href = '/auth/google';
   };
 
   return (
@@ -79,7 +66,7 @@ const PasswordStrengthExample = () => {
                 placeholder="Email ID"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required // Making the field required
+                required
               />
               <div id="spinner" className="spinner"></div>
             </div>
@@ -92,7 +79,7 @@ const PasswordStrengthExample = () => {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required // Making the field required
+                required
               />
               <div id="spinner" className="spinner"></div>
             </div>
@@ -100,9 +87,12 @@ const PasswordStrengthExample = () => {
             <button className="control" type="button" onClick={handleLogin}>
               <b>Login</b>
             </button>
+            <button className="google-login" type="button" onClick={handleGoogleLogin}>
+            <FaGoogle size={30} style={{marginRight:'0.8rem'}} /> <b> Sign in with Google</b>
+            </button>
             <a href="/register">
               <button className="control" type="button">
-                <b>New User?</b>
+                <b>Register with Email ID</b>
               </button>
             </a>
           </form>

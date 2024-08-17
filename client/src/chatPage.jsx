@@ -32,6 +32,22 @@ const ChatPage = () => {
   const [age, setAge] = useState('Mixtral8x7BInstruct'); // Initialize SELECT model state
   const [isVisibleEg, setIsVisibleEg] = useState(true);
 
+
+  useEffect(() => {
+    // Extract the token from the URL
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get('token');
+    
+
+    if (token) {
+      // Store the token in localStorage
+      localStorage.setItem('accessToken', `Bearer ${token}`);
+
+      // Redirect to the desired route (e.g., '/chat' without the token in the URL)
+      navigateTo('/chat');
+    } 
+  }, [navigateTo]);
+
   useEffect(() => {
     const verifyToken = async () => {
       try {
