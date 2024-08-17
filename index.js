@@ -89,7 +89,7 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { session: false, failureRedirect: '/' }),
   (req, res) => {
     const accessToken = generateAccessToken({ email: req.user.email });
-    res.redirect(`https://abyuday.vercel.app/chat?token=${accessToken}`); // Redirect with the token in the URL
+    res.redirect(`/chat?token=${accessToken}`); // Redirect with the token in the URL
   }
 );
 
