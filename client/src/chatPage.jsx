@@ -182,7 +182,7 @@ const ChatPage = () => {
                 <img src={logout} alt="query" className="listItemsImg" />Logout
               </button>
             </a>
-            <a href="/home#features">
+            <a href="/">
               <button className="query bottomQuery ">
                 <img src={thunder} alt="query" className="listItemsImg" />Models
               </button>
