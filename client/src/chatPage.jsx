@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './Chatpage.css';
+import Cookies from 'js-cookie';
 import gptLogo from './assets/robotics.svg';
 import addBtn from './assets/add-30.png';
 import msgIcon from './assets/message.svg';
@@ -142,6 +143,12 @@ const ChatPage = () => {
     display: isVisibleEg ? 'flex' : 'none'
   };
 
+  const LogoutFunction = ()=>{
+    Cookies.remove('accessToken');
+    localStorage.setItem('accessToken', '')
+  }
+  
+
   return (
     <div className="Appp">
       {isVisible && (
@@ -171,7 +178,7 @@ const ChatPage = () => {
           </div>
           <div className="lowerSide">
             <a href="/login">
-              <button className="query bottomQuery " onClick={() => localStorage.setItem('accessToken', '')}>
+              <button className="query bottomQuery " onClick={LogoutFunction}>
                 <img src={logout} alt="query" className="listItemsImg" />Logout
               </button>
             </a>

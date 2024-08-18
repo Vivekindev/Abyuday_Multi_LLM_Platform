@@ -79,6 +79,13 @@ app.get('/register', function (_, res) {
       }
     });
   });
+  app.get('/auth/token', function (_, res) {
+    res.sendFile(path.join(__dirname, "./client/dist/index.html"), function (err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    });
+  });
 
 // Google OAuth routes
 app.get('/auth/google',
@@ -90,7 +97,7 @@ app.get('/auth/google/callback',
   (req, res) => {
     const accessToken = generateAccessToken({ email: req.user.email });
     res.cookie('accessToken', accessToken);
-    res.redirect(`/chat`); // Redirect with the token in the URL
+    res.redirect(`/auth/token`); // Redirect with the token in the URL
   }
 );
 
